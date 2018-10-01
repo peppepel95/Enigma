@@ -16,9 +16,9 @@ import java.util.ArrayList;
  * @author peppepel95
  */
 public class Read_input_file {
-    private ArrayList<Rotore> rotori;
-    private Scambiatore scambiatore;
-    private Riflettore riflettore;
+    private final ArrayList<Rotore> rotori;
+    private final Scambiatore scambiatore;
+    private final Riflettore riflettore;
     private final String rot;
     private final String config;
 
@@ -79,7 +79,13 @@ public class Read_input_file {
             }
         }
         if (type.equals("setConfiguration")) {
-            //setta scambiatore e riflettore
+            String[] str = result.split(": ");
+            if (str[1].contains(",")) {
+                String[] items = str[1].split(", ");
+            }
+            else {
+                String[] items = str[1].split(" ");
+            }
         }
     }
     
