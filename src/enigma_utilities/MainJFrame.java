@@ -169,7 +169,7 @@ public class MainJFrame extends javax.swing.JFrame {
         f.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent evt){
                 //manca codice per effettuare la codifica/decodifica
-                mainTextArea.setText(f.getText());
+                mainTextArea.setText(pulisciStringa(f.getText()));
                 setVisible(true);
             }});
     }//GEN-LAST:event_inserisciButtonMouseClicked
@@ -186,6 +186,18 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_caricaButtonMouseClicked
 
+    private String pulisciStringa(String str){
+        String s = "";
+        char[] arr = str.toCharArray();
+        for (int i = 0; i<arr.length; i++){
+            char c = arr[i];
+            if (c >= 65 && c <= 90){
+                s += c;
+            }
+        }
+        return s;
+    }
+    
     /**
      * @param args the command line arguments
      */
