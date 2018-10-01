@@ -48,7 +48,7 @@ public class Read_input_file {
     }
 
     private void setConfiguration() throws IOException, Exception {
-        this.readText(this.rot, "setConfiguration");
+        this.readText(this.config, "setConfiguration");
     }
     
     private void setRotori() throws IOException, Exception {
