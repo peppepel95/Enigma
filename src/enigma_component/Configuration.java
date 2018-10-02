@@ -5,34 +5,43 @@
  */
 package enigma_component;
 
-import java.util.Arrays;
-
-
 /**
  *
  * @author peppepel95
  */
 public class Configuration {
-    private int[] Rot;
+
     private int[] StartPos;
-    private String[] Plugboard;
-    private String[] Reflector;
+    private Scambiatore Plugboard;
+    private Riflettore Reflector;
 
     public Configuration() {
     }
-    
+
+    private int[] Rot;
+
+    public int[] getRot() {
+        return Rot;
+    }
+
+    public int[] getStartPos() {
+        return StartPos;
+    }
+
+    public Scambiatore getPlugboard() {
+        return Plugboard;
+    }
+
+    public Riflettore getReflector() {
+        return Reflector;
+    }
 
     public void setRot(String[] Rot) {
-        int temp[] = new int[Rot.length]; 
+        int temp[] = new int[Rot.length];
         for (int i = 0; i < Rot.length; i++) {
             temp[i] = Integer.parseInt(Rot[i]);
         }
         this.Rot = temp;
-    }
-
-    @Override
-    public String toString() {
-        return "Configuration{" + "Rot=" + Arrays.toString(Rot) + ", StartPos=" + Arrays.toString(StartPos) + ", Plugboard=" + Arrays.toString(Plugboard) + ", Reflector=" + Arrays.toString(Reflector) + '}';
     }
 
     public void setStartPos(String[] StartPos) {
@@ -44,10 +53,10 @@ public class Configuration {
     }
 
     public void setPlugboard(String[] Plugboard) {
-        this.Plugboard = Plugboard;
+        this.Plugboard = new Scambiatore(Plugboard);
     }
 
     public void setReflector(String[] Reflector) {
-        this.Reflector = Reflector;
+        this.Reflector = new Riflettore(Reflector);
     }
 }
