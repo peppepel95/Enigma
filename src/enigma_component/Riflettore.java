@@ -35,4 +35,14 @@ public class Riflettore {
             this.reflectMap.put(reflector1.charAt(1), reflector1.charAt(0));
         }
     }
+    
+    public static void main(String[] args) {
+        String[] s = new String[2];
+        s[0] = "AB";
+        s[1] = "CD";
+        Riflettore r = new Riflettore(s);
+        char c = r.reflect('A');
+        System.out.println(c);
+        //System.out.println(r.reflectMap.toString());
+    }
 }

@@ -16,5 +16,15 @@ public class Scambiatore extends Riflettore{
     
     public char Swap(char character) {
         return super.reflect(character);
-    } 
+    }
+    
+    public static void main(String[] args) {
+        String[] str = new String[2];
+        str[0] = "AB";
+        str[1] = "CD";
+        Scambiatore s = new Scambiatore(str);
+        char c = s.Swap('A');
+        System.out.println(c);
+        //System.out.println(s.reflectMap.toString());
+    }
 }
