@@ -24,7 +24,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
-        
+        this.enigma = new Enigma();
     }
 
     /**
@@ -171,8 +171,15 @@ public class MainJFrame extends javax.swing.JFrame {
         setVisible(false);
         f.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent evt){
+                char[] inputText = pulisciStringa(f.getText()).toCharArray();
+                String outputText = "";
                 //manca codice per effettuare la codifica/decodifica
-                mainTextArea.setText(pulisciStringa(f.getText()));
+                for (int i = 0; i < inputText.length; i++){
+                    char c = enigma.codifica(inputText[i]);
+                    outputText += c;
+                }
+                
+                mainTextArea.setText(outputText);
                 setVisible(true);
             }});
     }//GEN-LAST:event_inserisciButtonMouseClicked
