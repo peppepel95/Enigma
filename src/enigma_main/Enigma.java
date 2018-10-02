@@ -31,6 +31,8 @@ public class Enigma {
         Read_input_file rif = new Read_input_file("rotore", "configurazione");
         try {
             this.configuration = rif.getConfiguration();
+            this.scambiatore = this.configuration.getPlugboard();
+            this.riflettore = this.configuration.getReflector();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Impossibile caricare configurazione!");
         }
