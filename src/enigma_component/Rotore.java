@@ -12,13 +12,32 @@ import java.util.ArrayList;
  * @author peppepel95
  */
 public class Rotore {
-    private ArrayList<Character> directRotor;
-    private ArrayList<Character> inverseRotor;
+    private final ArrayList<Character> directRotor;
+    private final ArrayList<Character> inverseRotor;
     private int offset;
     
-    public Rotore(String rotor, int offset) {
+    public Rotore(String rotor) {
+        directRotor = new ArrayList<>();
+        inverseRotor = new ArrayList<>();
         int index;
         char c;
+        
+        for (int i = 0; i < rotor.length(); i++) {
+            c = rotor.charAt(i);
+            index = (int) c - 65;
+            
+            directRotor.add(c);
+            inverseRotor.add(index, (char)(i + 65));
+        }
+        this.offset = 0;
+    }
+    
+    public Rotore(String rotor, int offset) {
+        directRotor = new ArrayList<>();
+        inverseRotor = new ArrayList<>();
+        int index;
+        char c;
+        
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);
             index = (int) c - 65;
