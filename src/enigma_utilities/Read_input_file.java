@@ -103,7 +103,6 @@ public class Read_input_file {
         }
     }
     
-    
     public static void main(String[] args) throws IOException, Exception {
         Read_input_file rif = new Read_input_file("rotore", "configurazione");
         ArrayList<Rotore> rotori = rif.getRotori();
