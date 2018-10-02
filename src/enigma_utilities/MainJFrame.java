@@ -22,9 +22,9 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    public MainJFrame(Enigma enigma) {
+    public MainJFrame() {
         initComponents();
-        this.enigma = enigma;
+        
     }
 
     /**
