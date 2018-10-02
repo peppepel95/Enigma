@@ -5,6 +5,7 @@
  */
 package enigma_utilities;
 
+import enigma_main.Enigma;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -17,11 +18,13 @@ import javax.swing.JOptionPane;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    private Enigma enigma;
     /**
      * Creates new form MainJFrame
      */
-    public MainJFrame() {
+    public MainJFrame(Enigma enigma) {
         initComponents();
+        this.enigma = enigma;
     }
 
     /**
