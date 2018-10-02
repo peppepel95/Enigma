@@ -8,7 +8,10 @@ package enigma_utilities;
 import enigma_main.Enigma;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -17,8 +20,9 @@ import javax.swing.JOptionPane;
  * @author coluc
  */
 public class MainJFrame extends javax.swing.JFrame {
-
+    
     private Enigma enigma;
+
     /**
      * Creates new form MainJFrame
      */
@@ -170,18 +174,12 @@ public class MainJFrame extends javax.swing.JFrame {
         f.setVisible(true);
         setVisible(false);
         f.addWindowListener(new WindowAdapter() {
-            public void windowClosed(WindowEvent evt){
-                char[] inputText = pulisciStringa(f.getText()).toCharArray();
-                String outputText = "";
-                //manca codice per effettuare la codifica/decodifica
-                for (int i = 0; i < inputText.length; i++){
-                    char c = enigma.codifica(inputText[i]);
-                    outputText += c;
-                }
-                
+            public void windowClosed(WindowEvent evt) {
+                String outputText = codificaTesto(f.getText());
                 mainTextArea.setText(outputText);
                 setVisible(true);
-            }});
+            }
+        });
     }//GEN-LAST:event_inserisciButtonMouseClicked
 
     private void caricaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_caricaButtonMouseClicked
@@ -190,24 +188,60 @@ public class MainJFrame extends javax.swing.JFrame {
         int returnVal = frame.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             JOptionPane.showMessageDialog(null, "Apertura file completata!");
-            //manca codice per leggere testo da file ed effettuare la codifica/decodifica
+            String input = leggiFile(frame.getSelectedFile().getAbsolutePath());
+            String outputText = codificaTesto(input);
+            mainTextArea.setText(outputText);
         } else {
             JOptionPane.showMessageDialog(null, "Si è verificato un errore!");
         }
     }//GEN-LAST:event_caricaButtonMouseClicked
-
-    private String pulisciStringa(String str){
+    
+    private String pulisciStringa(String str) {
         String s = "";
         char[] arr = str.toCharArray();
-        for (int i = 0; i<arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             char c = arr[i];
-            if (c >= 65 && c <= 90){
+            if (c >= 65 && c <= 90) {
                 s += c;
+            }
+            if (c == ' '){
+                s += ' ';
             }
         }
         return s;
     }
     
+    private String leggiFile(String filename) {
+        String text = "";
+        try {
+            FileReader f = new FileReader(filename);
+            BufferedReader b = new BufferedReader(f);
+            String s = "";
+            while (true) {
+                s = b.readLine();
+                if (s == null) {
+                    break;
+                }
+                text += s + "\n";
+            }
+            f.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return text;
+    }
+    
+    private String codificaTesto(String input) {
+        char[] inputText = pulisciStringa(input).toCharArray();
+        String outputText = "";
+        
+        for (int i = 0; i < inputText.length; i++) {
+            char c = enigma.codifica(inputText[i]);
+            outputText += c;
+        }
+        return outputText;
+    }
+
     /**
      * @param args the command line arguments
      */
