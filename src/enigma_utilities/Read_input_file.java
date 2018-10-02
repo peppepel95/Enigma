@@ -17,8 +17,6 @@ import java.util.ArrayList;
  */
 public class Read_input_file {
     private final ArrayList<Rotore> rotori;
-    private final Scambiatore scambiatore;
-    private final Riflettore riflettore;
     private final String rot;
     private final String config;
     private Configuration config_obj;
@@ -27,8 +25,7 @@ public class Read_input_file {
         this.rot = rot;
         this.config = config;
         this.rotori = new ArrayList<>();
-        this.scambiatore = null;
-        this.riflettore = null;
+        this.config_obj = null;
     }
     
     private void readText(String file, String type) throws FileNotFoundException, IOException, Exception {
@@ -60,26 +57,22 @@ public class Read_input_file {
             this.setRotori();
         return rotori;
     }
-
-    public Scambiatore getScambiatore() throws IOException, Exception {
-        if (this.scambiatore == null)
+    
+    public Configuration getConfiguration() throws Exception {
+        if (this.config_obj == null) {
+            this.config_obj = new Configuration();
             this.setConfiguration();
-        return scambiatore;
+        }
+        return config_obj;
     }
-
-    public Riflettore getRiflettore() throws IOException, Exception {
-        if (this.riflettore == null)
-            this.setConfiguration();
-        return riflettore;
-    }
-
+    
     private void hook(String type, String result) throws Exception {
         String pattern;
         String[] str;
         
         if (type.equals("setRotori")) {
             if (!result.contains("Rotore")) {
-                rotori.add(new Rotore());
+                rotori.add(new Rotore(result));
             }
         }
         if (type.equals("setConfiguration")) {
@@ -91,19 +84,18 @@ public class Read_input_file {
                 pattern = " ";
             }
             String[] items = str[1].split(pattern);
-            this.config_obj = new Configuration();
             switch (str[0]) {
                 case "Rotori":
-                    config_obj.setRot(items);
+                    this.config_obj.setRot(items);
                     break;
                 case "Posizione iniziale":
-                    config_obj.setStartPos(items);
+                    this.config_obj.setStartPos(items);
                     break;
                 case "Scambiatore":
-                    config_obj.setPlugboard(items);
+                    this.config_obj.setPlugboard(items);
                     break;
                 case "Riflettore":
-                    config_obj.setReflector(items);
+                    this.config_obj.setReflector(items);
                     break;
                 default:
                     throw new Exception();
@@ -115,6 +107,9 @@ public class Read_input_file {
     public static void main(String[] args) throws IOException, Exception {
         Read_input_file rif = new Read_input_file("rotore", "configurazione");
         ArrayList<Rotore> rotori = rif.getRotori();
+        System.out.println(rotori);
+        Configuration config = rif.getConfiguration();
+        System.out.println(config);
     }
     
 }

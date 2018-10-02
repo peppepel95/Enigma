@@ -10,5 +10,15 @@ package enigma_component;
  * @author peppepel95
  */
 public class Rotore {
+    private final String cifrario;
+
+    public Rotore(String result) {
+        this.cifrario = result;
+    }
+
+    @Override
+    public String toString() {
+        return "Rotore{" + "cifrario=" + cifrario + '}';
+    }
     
 }
