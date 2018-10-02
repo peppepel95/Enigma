@@ -4,43 +4,45 @@
  * and open the template in the editor.
  */
 package enigma_component;
+
 /**
  *
  * @author peppepel95
  */
 public class Rotore {
+
     private final char[] directRotor;
     private final char[] inverseRotor;
     private int offset;
-    
+
     public Rotore(String rotor) {
         this.directRotor = new char[26];
         this.inverseRotor = new char[26];
         int index;
         char c;
-        
+
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);
             index = (int) c - 65;
-            
+
             directRotor[i] = c;
-            inverseRotor[index] = (char)(i + 65);
+            inverseRotor[index] = (char) (i + 65);
         }
         this.offset = 0;
     }
-    
+
     public Rotore(String rotor, int offset) {
         this.directRotor = new char[26];
         this.inverseRotor = new char[26];
         int index;
         char c;
-        
+
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);
             index = (int) c - 65;
-            
+
             directRotor[i] = c;
-            inverseRotor[index] = (char)(i + 65);
+            inverseRotor[index] = (char) (i + 65);
         }
         this.offset = offset;
     }
@@ -52,55 +54,60 @@ public class Rotore {
     public char[] getInverseRotor() {
         return inverseRotor;
     }
-    
+
     public int getOffset() {
         return offset;
     }
-    
+
     public void rotate() {
-        offset ++;
-        if (offset == 26)
-                offset = 0;
+        offset++;
+        if (offset == 26) {
+            offset = 0;
+        }
     }
-    
+
     public void rotate(int offset) {
         this.offset += offset;
-        if (this.offset == 26)
-                this.offset = 0;
+        if (this.offset == 26) {
+            this.offset = 0;
+        }
     }
-    
+
     public char translate(char character, boolean direction) {
+        if (character == ' '){
+            return character;
+        }
         int index = (((int) character) - 65 + offset) % 26;
-        if (direction == false){
+        if (direction == false) {
             return directRotor[index];
         } else {
             return inverseRotor[index];
         }
     }
-    
+
     public static void main(String[] args) {
         String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
         Rotore r = new Rotore(s);
-        
+
         System.out.println(r.directRotor);
-        
+
         int offset = r.getOffset();
         System.out.println(offset);
-        
+
         char input = 'A';
-        char output = r.translate(input,true);
+        char output = r.translate(input, true);
         System.out.println(output);
-        
+
         input = 'E';
-        output = r.translate(input,false);
+        output = r.translate(input, false);
         System.out.println(output);
-        
+
         r.rotate();
-        
-        output = r.translate(input,true);
+
+        output = r.translate(input, true);
         System.out.println(output);
-        
-        output = r.translate(input,true);
+
+        output = r.translate(input, true);
         System.out.println(output);
     }
 }
