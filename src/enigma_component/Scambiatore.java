@@ -10,8 +10,6 @@ package enigma_component;
  * @author peppepel95
  */
 public class Scambiatore extends Riflettore{
-    private String  plugboard;
-
     public Scambiatore(String[] reflector) {
         super(reflector);
     }

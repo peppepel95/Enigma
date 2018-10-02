@@ -24,7 +24,9 @@ public class Riflettore {
         if (reflectMap.isEmpty()) {
             this.getMap();
         }
-        return reflectMap.get(character);
+        if (reflectMap.containsKey(character))
+            return reflectMap.get(character);
+        return character;
     }
 
     private void getMap() {
