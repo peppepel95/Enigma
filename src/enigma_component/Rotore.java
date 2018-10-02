@@ -5,34 +5,58 @@
  */
 package enigma_component;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author peppepel95
  */
 public class Rotore {
-    private String rotor;
+    private final ArrayList<Character> directRotor;
+    private final ArrayList<Character> inverseRotor;
     private int offset;
     
     public Rotore(String rotor) {
-        this.rotor = rotor;
+        directRotor = new ArrayList<>();
+        inverseRotor = new ArrayList<>();
+        int index;
+        char c;
+        
+        for (int i = 0; i < rotor.length(); i++) {
+            c = rotor.charAt(i);
+            index = (int) c - 65;
+            
+            directRotor.add(c);
+            inverseRotor.add(index, (char)(i + 65));
+        }
         this.offset = 0;
     }
     
     public Rotore(String rotor, int offset) {
-        this.rotor = rotor;
+        directRotor = new ArrayList<>();
+        inverseRotor = new ArrayList<>();
+        int index;
+        char c;
+        
+        for (int i = 0; i < rotor.length(); i++) {
+            c = rotor.charAt(i);
+            index = (int) c - 65;
+            
+            directRotor.add(c);
+            inverseRotor.add(index, (char)(i + 65));
+        }
         this.offset = offset;
     }
     
-    public String getRotor() {
-        return rotor;
+    public ArrayList<Character> getDirectRotor() {
+        return directRotor;
+    }
+    public ArrayList<Character> getinverseRotor() {
+        return inverseRotor;
     }
     
     public int getOffset() {
         return offset;
-    }
-
-    public void setRotor(String rotor) {
-        this.rotor = rotor;
     }
     
     public void rotate() {
@@ -47,42 +71,32 @@ public class Rotore {
                 this.offset = 0;
     }
     
-    public char translate(char character) {
+    public char translate(char character, boolean direction) {
         int index = (((int) character) - 65 + offset) % 26;
-        return rotor.charAt(index);
+        if (direction == false){
+            return directRotor.get(index);
+        } else {
+            return inverseRotor.get(index);
+        }
     }
     
     public static void main(String[] args) {
-//        String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-//        Rotore r = new Rotore(s);
-//        
-//        int offset = r.getOffset();
-//        System.out.println(offset);
-//        
-//        String rot = r.getRotor();
-//        System.out.println(rot);
-//        
-//        char input = 'A';
-//        char output = r.translate(input);
-//        System.out.println(output);
-//        
-//        r.rotate();
-//        
-//        output = r.translate(input);
-//        System.out.println(output);
-//        
-//        output = r.translate(input);
-//        System.out.println(output);
+        String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
+        Rotore r = new Rotore(s,0);
         
-        System.out.println("______________________");
+        int offset = r.getOffset();
+        System.out.println(offset);
         
-        String[] pairs = "IU, AS, DV, GL, FT, OX, EZ, CH, MR, KN, BQ, PW".split(",\\s");
+        char input = 'A';
+        char output = r.translate(input,true);
+        System.out.println(output);
         
-//        for(String p:pairs) {  
-//            System.out.println(p);  
-//        }  
+        r.rotate();
         
+        output = r.translate(input,true);
+        System.out.println(output);
         
+        output = r.translate(input,true);
+        System.out.println(output);
     }
-    
 }

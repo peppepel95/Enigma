@@ -8,6 +8,7 @@ package enigma_utilities;
 import enigma_component.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -95,7 +96,21 @@ public class Read_input_file {
                     this.config_obj.setPlugboard(items);
                     break;
                 case "Riflettore":
-                    this.config_obj.setReflector(items);
+                    String concatenation = Arrays.toString(items);
+                    String alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    char temp[] = new char[2];
+                    int k = 0;
+                    for (int i = 0; i < alf.length(); i++) {
+                        if (concatenation.indexOf(alf.charAt(i)) < 0) {
+                            temp[k] = alf.charAt(i);
+                            k++;
+                        }
+                    }
+                    String[] new_items = new String[items.length + 1];
+                    System.arraycopy(items, 0, new_items, 0, new_items.length - 1);
+                    new_items[new_items.length - 1] = new String(temp);
+                    
+                    this.config_obj.setReflector(new_items);
                     break;
                 default:
                     throw new Exception();

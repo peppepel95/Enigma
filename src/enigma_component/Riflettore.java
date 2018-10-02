@@ -5,27 +5,34 @@
  */
 package enigma_component;
 
+import java.util.HashMap;
+
 /**
  *
  * @author peppepel95
  */
 public class Riflettore {
-    private String  reflector;
-    // IU, AS, DV, GL, FT, OX, EZ, CH, MR, KN, BQ, PW
-    public Riflettore(String  reflector) {
-        String[] pairs = reflector.split(",\\s");
-    }
+    private final HashMap<Character,Character> reflectMap;
+    String[]  reflector;
     
-    public void setReflector(String reflector) {
+    public Riflettore(String[]  reflector) {
+        this.reflectMap = new HashMap<>();
         this.reflector = reflector;
     }
-
-    public String getReflector() {
-        return reflector;
-    }
     
-    public char translate(char character) {
-        int index = (((int) character) - 65) % 26;
-        return reflector.charAt(index);
+    public char reflect(char character) {
+        if (reflectMap.isEmpty()) {
+            this.getMap();
+        }
+        if (reflectMap.containsKey(character))
+            return reflectMap.get(character);
+        return character;
+    }
+
+    private void getMap() {
+        for (String reflector1 : reflector) {
+            this.reflectMap.put(reflector1.charAt(0), reflector1.charAt(1));
+            this.reflectMap.put(reflector1.charAt(1), reflector1.charAt(0));
+        }
     }
 }
