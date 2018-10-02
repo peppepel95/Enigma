@@ -10,5 +10,22 @@ package enigma_component;
  * @author peppepel95
  */
 public class Scambiatore {
+    String  plugboard;
+
+    public Scambiatore(String  reflector, int swaps) {
+        this.plugboard = reflector;
+    }
     
+    public void setPlugboard(String plugboard) {
+        this.plugboard = plugboard;
+    }
+
+    public String getPlugboard() {
+        return plugboard;
+    }
+    
+    public char translate(char character) {
+        int index = (((int) character) - 65) % 26;
+        return plugboard.charAt(index);
+    } 
 }

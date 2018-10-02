@@ -10,5 +10,22 @@ package enigma_component;
  * @author peppepel95
  */
 public class Riflettore {
+    String  reflector;
+
+    public Riflettore(String  reflector) {
+        this.reflector = reflector;
+    }
     
+    public void setReflector(String reflector) {
+        this.reflector = reflector;
+    }
+
+    public String getReflector() {
+        return reflector;
+    }
+    
+    public char translate(char character) {
+        int index = (((int) character) - 65) % 26;
+        return reflector.charAt(index);
+    }
 }
