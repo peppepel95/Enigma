@@ -10,11 +10,7 @@ package enigma_component;
  * @author peppepel95
  */
 public class Scambiatore {
-    String  plugboard;
-
-    public Scambiatore(String  reflector, int swaps) {
-        this.plugboard = reflector;
-    }
+    private String  plugboard;
     
     public void setPlugboard(String plugboard) {
         this.plugboard = plugboard;

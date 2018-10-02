@@ -10,11 +10,12 @@ package enigma_component;
  * @author peppepel95
  */
 public class Rotore {
-    String rotor;
-    int offset;
+    private String rotor;
+    private int offset;
     
     public Rotore(String rotor) {
         this.rotor = rotor;
+        this.offset = 0;
     }
     
     public Rotore(String rotor, int offset) {
@@ -50,4 +51,38 @@ public class Rotore {
         int index = (((int) character) - 65 + offset) % 26;
         return rotor.charAt(index);
     }
+    
+    public static void main(String[] args) {
+//        String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
+//        Rotore r = new Rotore(s);
+//        
+//        int offset = r.getOffset();
+//        System.out.println(offset);
+//        
+//        String rot = r.getRotor();
+//        System.out.println(rot);
+//        
+//        char input = 'A';
+//        char output = r.translate(input);
+//        System.out.println(output);
+//        
+//        r.rotate();
+//        
+//        output = r.translate(input);
+//        System.out.println(output);
+//        
+//        output = r.translate(input);
+//        System.out.println(output);
+        
+        System.out.println("______________________");
+        
+        String[] pairs = "IU, AS, DV, GL, FT, OX, EZ, CH, MR, KN, BQ, PW".split(",\\s");
+        
+//        for(String p:pairs) {  
+//            System.out.println(p);  
+//        }  
+        
+        
+    }
+    
 }

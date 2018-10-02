@@ -10,10 +10,10 @@ package enigma_component;
  * @author peppepel95
  */
 public class Riflettore {
-    String  reflector;
-
+    private String  reflector;
+    // IU, AS, DV, GL, FT, OX, EZ, CH, MR, KN, BQ, PW
     public Riflettore(String  reflector) {
-        this.reflector = reflector;
+        String[] pairs = reflector.split(",\\s");
     }
     
     public void setReflector(String reflector) {
