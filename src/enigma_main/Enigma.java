@@ -5,10 +5,7 @@
  */
 package enigma_main;
 
-import enigma_component.Configuration;
-import enigma_component.Riflettore;
-import enigma_component.Rotore;
-import enigma_component.Scambiatore;
+import enigma_component.*;
 import enigma_utilities.Read_input_file;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
