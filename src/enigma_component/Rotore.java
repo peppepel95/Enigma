@@ -4,21 +4,18 @@
  * and open the template in the editor.
  */
 package enigma_component;
-
-import java.util.ArrayList;
-
 /**
  *
  * @author peppepel95
  */
 public class Rotore {
-    private final ArrayList<Character> directRotor;
-    private final ArrayList<Character> inverseRotor;
+    private final char[] directRotor;
+    private final char[] inverseRotor;
     private int offset;
     
     public Rotore(String rotor) {
-        directRotor = new ArrayList<>();
-        inverseRotor = new ArrayList<>();
+        this.directRotor = new char[26];
+        this.inverseRotor = new char[26];
         int index;
         char c;
         
@@ -26,15 +23,15 @@ public class Rotore {
             c = rotor.charAt(i);
             index = (int) c - 65;
             
-            directRotor.add(c);
-            inverseRotor.add(index, (char)(i + 65));
+            directRotor[i] = c;
+            inverseRotor[index] = (char)(i + 65);
         }
         this.offset = 0;
     }
     
     public Rotore(String rotor, int offset) {
-        directRotor = new ArrayList<>();
-        inverseRotor = new ArrayList<>();
+        this.directRotor = new char[26];
+        this.inverseRotor = new char[26];
         int index;
         char c;
         
@@ -42,16 +39,17 @@ public class Rotore {
             c = rotor.charAt(i);
             index = (int) c - 65;
             
-            directRotor.add(c);
-            inverseRotor.add(index, (char)(i + 65));
+            directRotor[i] = c;
+            inverseRotor[index] = (char)(i + 65);
         }
         this.offset = offset;
     }
-    
-    public ArrayList<Character> getDirectRotor() {
+
+    public char[] getDirectRotor() {
         return directRotor;
     }
-    public ArrayList<Character> getinverseRotor() {
+
+    public char[] getInverseRotor() {
         return inverseRotor;
     }
     
@@ -74,21 +72,27 @@ public class Rotore {
     public char translate(char character, boolean direction) {
         int index = (((int) character) - 65 + offset) % 26;
         if (direction == false){
-            return directRotor.get(index);
+            return directRotor[index];
         } else {
-            return inverseRotor.get(index);
+            return inverseRotor[index];
         }
     }
     
     public static void main(String[] args) {
         String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-        Rotore r = new Rotore(s,0);
+        Rotore r = new Rotore(s);
+        
+        System.out.println(r.directRotor);
         
         int offset = r.getOffset();
         System.out.println(offset);
         
         char input = 'A';
         char output = r.translate(input,true);
+        System.out.println(output);
+        
+        input = 'E';
+        output = r.translate(input,false);
         System.out.println(output);
         
         r.rotate();
