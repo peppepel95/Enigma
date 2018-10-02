@@ -33,17 +33,19 @@ public class Enigma {
             this.configuration = rif.getConfiguration();
             this.scambiatore = this.configuration.getPlugboard();
             this.riflettore = this.configuration.getReflector();
+            this.initial_position = this.configuration.getStartPos(); //volevi questo?
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Impossibile caricare configurazione!");
         }
         try {
             ArrayList<Rotore> arr = rif.getRotori();
-            this.rotore1 = arr.get(0);
-            this.rotore2 = arr.get(1);
-            this.rotore3 = arr.get(2);
-            this.initial_position[0] = this.rotore1.getOffset();
-            this.initial_position[1] = this.rotore2.getOffset();
-            this.initial_position[2] = this.rotore3.getOffset();
+            this.rotore1 = arr.get(this.configuration.getRot()[0]);
+            this.rotore2 = arr.get(this.configuration.getRot()[1]);
+            this.rotore3 = arr.get(this.configuration.getRot()[2]);
+//            this.initial_position[0] = this.rotore1.getOffset();
+//            this.initial_position[1] = this.rotore2.getOffset(); 
+//            this.initial_position[2] = this.rotore3.getOffset();
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
         }
