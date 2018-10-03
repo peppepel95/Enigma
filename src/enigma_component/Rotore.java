@@ -77,11 +77,16 @@ public class Rotore {
         if (character == ' '){
             return character;
         }
-        int index = (((int) character) - 65 + offset) % 26;
-        if (direction == false) {
+        if (direction) {
+            int index = (((int) character) - 65 + offset) % 26;
             return directRotor[index];
         } else {
-            return inverseRotor[index];
+            int index = (((int) character) - 65) % 26;
+            index = inverseRotor[index]-offset;
+            if (index < 65){
+                index += 26;
+            }
+            return (char) index;
         }
     }
 

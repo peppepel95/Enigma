@@ -39,7 +39,7 @@ public class Configuration {
     public void setRot(String[] Rot) {
         int temp[] = new int[Rot.length];
         for (int i = 0; i < Rot.length; i++) {
-            temp[i] = Integer.parseInt(Rot[i]);
+            temp[i] = Integer.parseInt(Rot[i])-1;
         }
         this.Rot = temp;
     }

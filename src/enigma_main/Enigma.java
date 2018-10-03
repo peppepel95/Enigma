@@ -50,6 +50,14 @@ public class Enigma {
     public char codifica(char input) {
         char c = this.scambiatore.Swap(input);
         c = this.rotore1.translate(c, true);
+        
+        c = this.rotore2.translate(c, true);
+        c = this.rotore3.translate(c, true);
+        c = this.riflettore.reflect(c);
+        c = this.rotore3.translate(c, false);
+        c = this.rotore2.translate(c, false);
+        c = this.rotore1.translate(c, false);
+        c = this.scambiatore.Swap(c);
         this.rotore1.rotate();
         if (this.rotore1.getOffset() == this.initial_position[0]) {
             this.rotore2.rotate();
@@ -57,12 +65,7 @@ public class Enigma {
                 this.rotore3.rotate();
             }
         }
-        c = this.rotore2.translate(c, true);
-        c = this.rotore3.translate(c, true);
-        c = this.riflettore.reflect(c);
-        c = this.rotore3.translate(c, false);
-        c = this.rotore2.translate(c, false);
-        return this.rotore1.translate(c, false);
+        return c;
     }
 
     /**
@@ -70,7 +73,8 @@ public class Enigma {
      */
     public static void main(String[] args) {
         Enigma temp = new Enigma();
-        System.out.println(temp.codifica('A'));
+        System.out.println(temp.codifica('I'));
+        System.out.println(temp.codifica('B'));
     }
 
 }

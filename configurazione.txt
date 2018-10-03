@@ -1,4 +1,4 @@
 Rotori: 3, 4, 1
 Posizione iniziale: 12, 5, 24
-Scambiatore: EJ OY IV AQ KV FX MT PS LU BD
+Scambiatore: EJ OY IV AQ KW FX MT PS LU BD
 Riflettore: IU AS DV GL FT OX EZ CH MR KN BQ PW
