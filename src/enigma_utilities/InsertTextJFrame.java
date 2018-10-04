@@ -52,7 +52,10 @@ public class InsertTextJFrame extends javax.swing.JFrame {
 
         mainTextArea.setColumns(20);
         mainTextArea.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        mainTextArea.setLineWrap(true);
         mainTextArea.setRows(5);
+        mainTextArea.setToolTipText("");
+        mainTextArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(mainTextArea);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
