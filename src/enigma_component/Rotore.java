@@ -60,17 +60,11 @@ public class Rotore {
     }
 
     public void rotate() {
-        offset++;
-        if (offset == 26) {
-            offset = 0;
-        }
+        this.offset = (this.offset + 1)%26;
     }
 
     public void rotate(int offset) {
-        this.offset += offset;
-        if (this.offset == 26) {
-            this.offset = 0;
-        }
+        this.offset = (this.offset + offset)%26;
     }
 
     public char translate(char character, boolean direction) {
