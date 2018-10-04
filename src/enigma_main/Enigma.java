@@ -6,7 +6,7 @@
 package enigma_main;
 
 import enigma_component.*;
-import enigma_utilities.Read_input_file;
+import enigma_utilities.StartUpEnigma;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -26,7 +26,7 @@ public class Enigma {
     private int[] initial_position;
 
     public Enigma() {
-        Read_input_file rif = new Read_input_file("rotore", "configurazione");
+        StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
         try {
             this.configuration = rif.getConfiguration();
             this.scambiatore = this.configuration.getPlugboard();

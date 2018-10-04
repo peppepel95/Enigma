@@ -16,33 +16,17 @@ import java.util.Arrays;
  * in base alla configurazione seleziona i rotori e salva scambiatore e riflettore.
  * @author peppepel95
  */
-public class Read_input_file {
+public class StartUpEnigma extends ReadFile{
     private final ArrayList<Rotore> rotori;
     private final String rot;
     private final String config;
     private Configuration config_obj;
 
-    public Read_input_file(String rot, String config) {
+    public StartUpEnigma(String rot, String config) {
         this.rot = rot;
         this.config = config;
         this.rotori = new ArrayList<>();
         this.config_obj = null;
-    }
-    
-    private void readText(String file, String type) throws FileNotFoundException, IOException, Exception {
-        String result;
-        boolean eof = false;
-        FileReader filein = new FileReader(file + ".txt");
-        BufferedReader br = new BufferedReader(filein);
-        while (!eof) {
-            result = br.readLine();
-            if (result == null) {
-                eof = true;
-            }
-            else {
-                this.hook(type,result);
-            }
-        }
     }
 
     private void setConfiguration() throws IOException, Exception {
@@ -67,7 +51,8 @@ public class Read_input_file {
         return config_obj;
     }
     
-    private void hook(String type, String result) throws Exception {
+    @Override
+    public void hook(String type, String result) throws Exception {
         String pattern;
         String[] str;
         
@@ -119,7 +104,7 @@ public class Read_input_file {
     }
     
     public static void main(String[] args) throws IOException, Exception {
-        Read_input_file rif = new Read_input_file("rotore", "configurazione");
+        StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
         ArrayList<Rotore> rotori = rif.getRotori();
         System.out.println(rotori);
         Configuration config = rif.getConfiguration();
