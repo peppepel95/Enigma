@@ -81,26 +81,30 @@ public class StartUpEnigma extends ReadFile{
                     this.config_obj.setPlugboard(items);
                     break;
                 case "Riflettore":
-                    String concatenation = Arrays.toString(items);
-                    String alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                    char temp[] = new char[2];
-                    int k = 0;
-                    for (int i = 0; i < alf.length(); i++) {
-                        if (concatenation.indexOf(alf.charAt(i)) < 0) {
-                            temp[k] = alf.charAt(i);
-                            k++;
-                        }
-                    }
-                    String[] new_items = new String[items.length + 1];
-                    System.arraycopy(items, 0, new_items, 0, new_items.length - 1);
-                    new_items[new_items.length - 1] = new String(temp);
-                    
+                    String[] new_items = StartUpEnigma.findLast(items);
                     this.config_obj.setReflector(new_items);
                     break;
                 default:
                     throw new Exception();
             }
         }
+    }
+    
+    public static String[] findLast(String[] items) {
+        String concatenation = Arrays.toString(items);
+        String alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        char temp[] = new char[2];
+        int k = 0;
+        for (int i = 0; i < alf.length(); i++) {
+            if (concatenation.indexOf(alf.charAt(i)) < 0) {
+                temp[k] = alf.charAt(i);
+                k++;
+            }
+        }
+        String[] new_items = new String[items.length + 1];
+        System.arraycopy(items, 0, new_items, 0, new_items.length - 1);
+        new_items[new_items.length - 1] = new String(temp);
+        return new_items;
     }
     
     public static void main(String[] args) throws IOException, Exception {

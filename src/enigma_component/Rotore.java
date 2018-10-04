@@ -5,6 +5,8 @@
  */
 package enigma_component;
 
+import java.util.Arrays;
+
 /**
  *
  * @author peppepel95
@@ -92,7 +94,7 @@ public class Rotore {
         String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
         Rotore r = new Rotore(s);
 
-        System.out.println(r.directRotor);
+        System.out.println(Arrays.toString(r.directRotor));
 
         int offset = r.getOffset();
         System.out.println(offset);

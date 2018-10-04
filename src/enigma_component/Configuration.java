@@ -14,11 +14,10 @@ public class Configuration {
     private int[] StartPos;
     private Scambiatore Plugboard;
     private Riflettore Reflector;
+    private int[] Rot;
 
     public Configuration() {
     }
-
-    private int[] Rot;
 
     public int[] getRot() {
         return Rot;

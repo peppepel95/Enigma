@@ -16,7 +16,11 @@ import javax.swing.JOptionPane;
  * @author peppepel95
  */
 public class Enigma {
-
+    private static final int NUMERO_ROTORI = 3;
+    private static final int LUNG_ALF = 26;
+    private static final int MIN_PLUG = 7;
+    private static final int MAX_PLUG = 10;
+    
     private Rotore rotore1;
     private Rotore rotore2;
     private Rotore rotore3;
@@ -24,6 +28,7 @@ public class Enigma {
     private Riflettore riflettore;
     private Configuration configuration;
     private int[] initial_position;
+    private ArrayList<Rotore> arrRot;
 
     public Enigma() {
         StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
@@ -37,15 +42,20 @@ public class Enigma {
             JOptionPane.showMessageDialog(null, "Impossibile caricare configurazione!");
         }
         try {
-            ArrayList<Rotore> arr = rif.getRotori();
-            this.rotore1 = arr.get(this.configuration.getRot()[0]);
-            this.rotore2 = arr.get(this.configuration.getRot()[1]);
-            this.rotore3 = arr.get(this.configuration.getRot()[2]);
+            this.arrRot = rif.getRotori();
+            int[] index = this.configuration.getRot();
+            this.getRotori(arrRot, index);
             this.riallinea();
         } catch (Exception ex) {
             System.err.println(Arrays.toString(ex.getStackTrace()));
             JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
         }
+    }
+    
+    private void getRotori(ArrayList<Rotore> arr,int[] index) {
+        this.rotore1 = arr.get(index[0]);
+        this.rotore2 = arr.get(index[1]);
+        this.rotore3 = arr.get(index[2]);
     }
     
     public final void riallinea(){
@@ -75,6 +85,23 @@ public class Enigma {
         return c;
     }
 
+    public void setConfiguration(int[] rotori, int[] posizioni, String scambiatore, String riflettore) {
+        if (rotori.length == NUMERO_ROTORI)         //cambio rotori
+            this.getRotori(this.arrRot, rotori);
+        
+        if (posizioni.length == NUMERO_ROTORI) {    //cambio posizioni
+            this.initial_position = posizioni;
+            this.riallinea();
+        }
+        
+        if (!scambiatore.isEmpty() && scambiatore.length() >= 3*MIN_PLUG-1 && scambiatore.length() <= 3*MAX_PLUG-1) {
+            this.scambiatore = new Scambiatore(scambiatore.split(" "));
+        }
+        
+        if (!riflettore.isEmpty() && riflettore.length() == (LUNG_ALF+LUNG_ALF/2-1)) {
+            this.riflettore = new Riflettore(riflettore.split(" "));
+        }
+    }
     /**
      * @param args the command line arguments
      */
