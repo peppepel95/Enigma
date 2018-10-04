@@ -98,8 +98,11 @@ public class Enigma {
             this.scambiatore = new Scambiatore(scambiatore.split(" "));
         }
         
-        if (!riflettore.isEmpty() && riflettore.length() == (LUNG_ALF+LUNG_ALF/2-1)) {
-            this.riflettore = new Riflettore(riflettore.split(" "));
+        if (!riflettore.isEmpty()) {
+            if (riflettore.length() == (LUNG_ALF+LUNG_ALF/2-1)) //26+12 = 38
+                this.riflettore = new Riflettore(riflettore.split(" "));
+            else if (riflettore.length() == (LUNG_ALF-2+(LUNG_ALF-2)/2-1)) //24+11 = 35
+                this.riflettore = new Riflettore(StartUpEnigma.findLast(riflettore.split(" ")));
         }
     }
     /**
