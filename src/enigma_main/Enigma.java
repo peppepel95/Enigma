@@ -65,9 +65,11 @@ public class Enigma {
     }
 
     public char codifica(char input) {
+        if (input == ' '){
+            return ' ';
+        }
         char c = this.scambiatore.Swap(input);
         c = this.rotore1.translate(c, true);
-        
         c = this.rotore2.translate(c, true);
         c = this.rotore3.translate(c, true);
         c = this.riflettore.reflect(c);

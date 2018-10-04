@@ -74,9 +74,6 @@ public class Rotore {
     }
     
     public char translate(char character, boolean direction) {
-        if (character == ' '){
-            return character;
-        }
         if (direction) {
             int index = (((int) character) - 65 + offset) % 26;
             return directRotor[index];
