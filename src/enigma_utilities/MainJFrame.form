@@ -73,10 +73,10 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="riallineaButton" pref="153" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="changeConfigButton" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="riallineaButton" min="-2" pref="209" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                  <Component id="changeConfigButton" pref="213" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -102,7 +102,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Riallinea Rotori"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 45]"/>
+              <Dimension value="[210, 45]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -117,7 +117,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cambia Configurazione"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 45]"/>
+              <Dimension value="[210, 45]"/>
             </Property>
           </Properties>
           <Events>
@@ -241,11 +241,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="inserisciButton" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="caricaButton" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="inserisciButton" min="-2" pref="212" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="caricaButton" min="-2" pref="213" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -270,7 +270,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Inserisci"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 45]"/>
+              <Dimension value="[210, 45]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -285,7 +285,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Carica da File"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[180, 45]"/>
+              <Dimension value="[210, 45]"/>
             </Property>
           </Properties>
           <Events>

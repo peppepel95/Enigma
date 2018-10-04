@@ -59,7 +59,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         riallineaButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         riallineaButton.setText("Riallinea Rotori");
-        riallineaButton.setPreferredSize(new java.awt.Dimension(180, 45));
+        riallineaButton.setPreferredSize(new java.awt.Dimension(210, 45));
         riallineaButton.setRequestFocusEnabled(false);
         riallineaButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -69,7 +69,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         changeConfigButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         changeConfigButton.setText("Cambia Configurazione");
-        changeConfigButton.setPreferredSize(new java.awt.Dimension(180, 45));
+        changeConfigButton.setPreferredSize(new java.awt.Dimension(210, 45));
         changeConfigButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 changeConfigButtonMouseClicked(evt);
@@ -82,9 +82,9 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(riallineaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                .addGap(130, 130, 130)
-                .addComponent(changeConfigButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(riallineaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(changeConfigButton, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,7 +149,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         inserisciButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         inserisciButton.setText("Inserisci");
-        inserisciButton.setPreferredSize(new java.awt.Dimension(180, 45));
+        inserisciButton.setPreferredSize(new java.awt.Dimension(210, 45));
         inserisciButton.setRequestFocusEnabled(false);
         inserisciButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -159,7 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         caricaButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         caricaButton.setText("Carica da File");
-        caricaButton.setPreferredSize(new java.awt.Dimension(180, 45));
+        caricaButton.setPreferredSize(new java.awt.Dimension(210, 45));
         caricaButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 caricaButtonMouseClicked(evt);
@@ -172,9 +172,9 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(inserisciButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(130, 130, 130)
-                .addComponent(caricaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(inserisciButton, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(caricaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
