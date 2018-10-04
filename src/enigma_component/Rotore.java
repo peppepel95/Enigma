@@ -73,6 +73,10 @@ public class Rotore {
         }
     }
 
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+    
     public char translate(char character, boolean direction) {
         if (character == ' '){
             return character;

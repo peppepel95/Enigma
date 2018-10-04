@@ -39,12 +39,21 @@ public class Enigma {
         try {
             ArrayList<Rotore> arr = rif.getRotori();
             this.rotore1 = arr.get(this.configuration.getRot()[0]);
+            this.rotore1.setOffset(initial_position[0]);
             this.rotore2 = arr.get(this.configuration.getRot()[1]);
+            this.rotore2.setOffset(initial_position[1]);
             this.rotore3 = arr.get(this.configuration.getRot()[2]);
+            this.rotore3.setOffset(initial_position[2]);
         } catch (Exception ex) {
             System.out.println(Arrays.toString(ex.getStackTrace()));
             JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
         }
+    }
+    
+    public void riallinea(){
+        this.rotore1.setOffset(initial_position[0]);
+        this.rotore2.setOffset(initial_position[1]);
+        this.rotore3.setOffset(initial_position[2]);
     }
 
     public char codifica(char input) {
