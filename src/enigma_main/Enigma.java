@@ -33,24 +33,22 @@ public class Enigma {
             this.riflettore = this.configuration.getReflector();
             this.initial_position = this.configuration.getStartPos();
         } catch (Exception ex) {
-            System.out.println(Arrays.toString(ex.getStackTrace()));
+            System.err.println(Arrays.toString(ex.getStackTrace()));
             JOptionPane.showMessageDialog(null, "Impossibile caricare configurazione!");
         }
         try {
             ArrayList<Rotore> arr = rif.getRotori();
             this.rotore1 = arr.get(this.configuration.getRot()[0]);
-            this.rotore1.setOffset(initial_position[0]);
             this.rotore2 = arr.get(this.configuration.getRot()[1]);
-            this.rotore2.setOffset(initial_position[1]);
             this.rotore3 = arr.get(this.configuration.getRot()[2]);
-            this.rotore3.setOffset(initial_position[2]);
+            this.riallinea();
         } catch (Exception ex) {
-            System.out.println(Arrays.toString(ex.getStackTrace()));
+            System.err.println(Arrays.toString(ex.getStackTrace()));
             JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
         }
     }
     
-    public void riallinea(){
+    public final void riallinea(){
         this.rotore1.setOffset(initial_position[0]);
         this.rotore2.setOffset(initial_position[1]);
         this.rotore3.setOffset(initial_position[2]);
