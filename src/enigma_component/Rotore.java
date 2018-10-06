@@ -5,8 +5,6 @@
  */
 package enigma_component;
 
-import java.util.Arrays;
-
 /**
  *
  * @author peppepel95
@@ -41,7 +39,8 @@ public class Rotore {
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);
             index = (int) c - 65;
-            DirectRotor[index] = ((i + 26) - index) % 26;
+            DirectRotor[index] = i;
+            InverseRotor[i] = index;
         }
         this.offset = offset;
     }
@@ -75,22 +74,21 @@ public class Rotore {
         String dir = "";
         String inv = "";
         for(int i = 0;i<26;i++){
-            dir += (char)(this.DirectRotor[i] + 65) + " ";
-            inv += (char)(this.InverseRotor[i] + 65) + " ";
+            dir += (this.DirectRotor[(i - offset + 26) % 26]) + " ";
+            inv += (this.InverseRotor[(i - offset + 26) % 26]) + " ";
         }
         return "Rotore{" + "DirectRotor=" + dir + ", InverseRotor=" + inv + '}';
     }
     
     
     
-    public char  translate(char character, boolean direction) {
-        int value = ((int) character) - 65;
+    public int  translate(int value, boolean direction) {
         if (direction) {
-            value = (DirectRotor[(value - offset + 26) % 26] + offset) % 26;
+            value = DirectRotor[(value - offset + 26) % 26];
         } else {
-            value = (InverseRotor[(value - offset + 26) % 26] + offset) % 26; 
+            value = InverseRotor[(value - offset + 26) % 26]; 
         }
-        return (char)(value + 65);
+        return value;
     }
 
     public static void main(String[] args) {
@@ -99,20 +97,29 @@ public class Rotore {
 
         System.out.println(r.toString());
 
-        char input = 'E';
+        int input = 0;
         int output = r.translate(input, true);
         System.out.println(output);
 
-        input = 'E';
         output = r.translate(input, false);
         System.out.println(output);
 
         r.rotate();
+        System.out.println(r.toString());
 
         output = r.translate(input, true);
         System.out.println(output);
 
+        output = r.translate(input, false);
+        System.out.println(output);
+        
+        r.rotate();
+        System.out.println(r.toString());
+
         output = r.translate(input, true);
+        System.out.println(output);
+
+        output = r.translate(input, false);
         System.out.println(output);
     }
 }
