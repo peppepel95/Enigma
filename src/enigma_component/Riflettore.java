@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @author peppepel95
  */
 public class Riflettore {
-    private final HashMap<Character,Character> reflectMap;
+    private final HashMap<Integer,Integer> reflectMap;
     String[]  reflector;
     
     public Riflettore(String[]  reflector) {
@@ -20,7 +20,7 @@ public class Riflettore {
         this.reflector = reflector;
     }
     
-    public char reflect(char character) {
+    public int reflect(int character) {
         if (reflectMap.isEmpty()) {
             this.getMap();
         }
@@ -31,8 +31,8 @@ public class Riflettore {
 
     private void getMap() {
         for (String reflector1 : reflector) {
-            this.reflectMap.put(reflector1.charAt(0), reflector1.charAt(1));
-            this.reflectMap.put(reflector1.charAt(1), reflector1.charAt(0));
+            this.reflectMap.put((int)(reflector1.charAt(0) - 65), (int)(reflector1.charAt(1) - 65));
+            this.reflectMap.put((int)(reflector1.charAt(1) - 65), (int)(reflector1.charAt(0) - 65));
         }
     }
     
@@ -41,7 +41,7 @@ public class Riflettore {
         s[0] = "AB";
         s[1] = "CD";
         Riflettore r = new Riflettore(s);
-        char c = r.reflect('A');
+        int c = r.reflect('A');
         System.out.println(c);
         //System.out.println(r.reflectMap.toString());
     }

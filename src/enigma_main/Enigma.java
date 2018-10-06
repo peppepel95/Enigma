@@ -79,7 +79,7 @@ public class Enigma {
                 this.rotore3.rotate();
             }
         }
-        char c = this.scambiatore.Swap(input);
+        int c = this.scambiatore.Swap((int)(input - 65));
         c = this.rotore1.translate(c, true);
         c = this.rotore2.translate(c, true);
         c = this.rotore3.translate(c, true);
@@ -88,7 +88,7 @@ public class Enigma {
         c = this.rotore2.translate(c, false);
         c = this.rotore1.translate(c, false);
         c = this.scambiatore.Swap(c);
-        return c;
+        return (char)(c + 65);
     }
 
     public void setConfiguration(int[] rotori, int[] posizioni, String scambiatore, String riflettore) {
