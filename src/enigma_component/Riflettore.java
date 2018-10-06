@@ -46,6 +46,7 @@ public class Riflettore {
         //System.out.println(r.reflectMap.toString());
     }
     
+    @Override
     public String toString(){
         String s = "";
         for (String temp: reflector){

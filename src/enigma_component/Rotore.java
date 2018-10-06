@@ -84,42 +84,74 @@ public class Rotore {
     
     public int  translate(int value, boolean direction) {
         if (direction) {
-            value = DirectRotor[(value - offset + 26) % 26];
+            value = (DirectRotor[(value - offset + 26) % 26] + offset) % 26;
         } else {
-            value = InverseRotor[(value - offset + 26) % 26]; 
+            value = (InverseRotor[(value - offset + 26) % 26] + offset) % 26; 
         }
         return value;
     }
-
+    
+    /*
+    Rotori: 3, 4, 1
+    Posizione iniziale: 12, 5, 24
+    Scambiatore: EJ OY IV AQ KW FX MT PS LU BD 
+    Riflettore: IU AS DV GL FT OX EZ CH MR KN BQ PW JY 
+    
+    Rotore#1
+    EKMFLGDQVZNTOWYHXUSPAIBRCJ
+    Rotore#2
+    AJDKSIRUXBLHWTMCQGZNPYFVOE
+    Rotore#3
+    BDFHJLCPRTXVZNYEIWGAKMUSQO
+    Rotore#4
+    ESOVPZJAYQUIRHXLNFTGKDCMWB
+    Rotore#5
+    VZBRGITYUPSDNHLXAWMJQOFECK
+    Rotore#6
+    JPGVOUMFYQBENHZRDKASXLICTW
+    Rotore#7
+    NZJHGRCXMYSWBOUFAIVLPEKQDT
+    Rotore#8
+    FKQHTLXOCBJSPDZRAMEWNIUYGV
+    */
+    
     public static void main(String[] args) {
-        String s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-        Rotore r = new Rotore(s);
-
-        System.out.println(r.toString());
-
-        int input = 0;
-        int output = r.translate(input, true);
-        System.out.println(output);
-
-        output = r.translate(input, false);
-        System.out.println(output);
-
-        r.rotate();
-        System.out.println(r.toString());
-
-        output = r.translate(input, true);
-        System.out.println(output);
-
-        output = r.translate(input, false);
-        System.out.println(output);
+        String s1 = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+        String s2 = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
+        String s3 = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
+        Rotore r1 = new Rotore(s1,0);//12
+        Rotore r2 = new Rotore(s2,0);//5
+        Rotore r3 = new Rotore(s3,0);//24
+        Riflettore s = new Riflettore("IU AS DV GL FT OX EZ CH MR KN BQ PW JY".split(" "));
+        System.out.println(r1.toString());
+        System.out.println(r2.toString());
+        System.out.println(r3.toString());
         
-        r.rotate();
-        System.out.println(r.toString());
+        
+        int input = 'A';
+        //prima traduzione, andata
+        int output = r1.translate(input, true);
+        System.out.println(output + " " + (int)(output - 65));
+        //seconda traduzione, andata
+        output = r2.translate(output, true);
+        System.out.println(output + " " + (int)(output - 65));
+        //terza traduzione, andata
+        output = r3.translate(output, true);
+        System.out.println(output + " " + (int)(output - 65));
+        //riflettore
+        output = s.reflect(output);
+        System.out.println("-----");
+        System.out.println(output + " " + (int)(output - 65));
+        System.out.println("-----");
+        //terza traduzione, ritorno
+        output = r3.translate(output, false);
+        System.out.println(output + " " + (int)(output - 65));
+        //seconda traduzione, ritorno
+        output = r2.translate(output, false);
+        System.out.println(output + " " + (int)(output - 65));
+        //prima traduzione, ritorno
+        output = r1.translate(input, false);
+        System.out.println(output + " " + (int)(output - 65));
 
-        output = r.translate(input, true);
-        System.out.println(output);
-
-        output = r.translate(input, false);
-        System.out.println(output);
     }
 }
