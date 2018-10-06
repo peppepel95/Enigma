@@ -5,17 +5,35 @@
  */
 package enigma_utilities;
 
+import enigma_component.Configuration;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author coluc
  */
 public class CongifJFrame extends javax.swing.JFrame {
-
+    private String filename;
+    private Configuration c;
+    
     /**
      * Creates new form CongifJFrame
      */
-    public CongifJFrame() {
+    public CongifJFrame(Configuration c) {
         initComponents();
+        this.filename = "configurazione.txt";
+        this.c = c;
+        rotSpinner1.setValue(c.getRot()[0]+1);
+        rotSpinner2.setValue(c.getRot()[1]+1);
+        rotSpinner3.setValue(c.getRot()[2]+1);
+        startPosSpinner1.setValue(c.getStartPos()[0]);
+        startPosSpinner2.setValue(c.getStartPos()[1]);
+        startPosSpinner3.setValue(c.getStartPos()[2]);
+        scambiatoreTextField.setText(c.getPlugboard().toString());
+        riflettoreTextField.setText(c.getReflector().toString());
     }
 
     /**
@@ -29,8 +47,30 @@ public class CongifJFrame extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        startPosLabel3 = new javax.swing.JLabel();
+        startPosSpinner3 = new javax.swing.JSpinner();
+        startPosSpinner2 = new javax.swing.JSpinner();
+        rotSpinner3 = new javax.swing.JSpinner();
+        startPosSpinner1 = new javax.swing.JSpinner();
+        rotLabel2 = new javax.swing.JLabel();
+        rotLabel3 = new javax.swing.JLabel();
+        startPosLabel2 = new javax.swing.JLabel();
+        rotSpinner1 = new javax.swing.JSpinner();
+        rotSpinner2 = new javax.swing.JSpinner();
+        startPosLabel1 = new javax.swing.JLabel();
+        rotLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        scambiatoreTextField = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        riflettoreTextField = new javax.swing.JTextField();
+        annullaButton = new javax.swing.JButton();
+        confermaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(PosizioneCentrale.getPosizioneCentrale());
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -44,7 +84,7 @@ public class CongifJFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -55,13 +95,190 @@ public class CongifJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "CONFIGURAZIONE ROTORI", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tempus Sans ITC", 0, 18))); // NOI18N
+
+        startPosLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        startPosLabel3.setText("Posizione iniziale");
+
+        startPosSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, 26, 1));
+
+        startPosSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 26, 1));
+
+        rotSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+
+        startPosSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 26, 1));
+
+        rotLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        rotLabel2.setText("Rotore 2");
+
+        rotLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        rotLabel3.setText("Rotore 3");
+
+        startPosLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        startPosLabel2.setText("Posizione iniziale");
+
+        rotSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+
+        rotSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+
+        startPosLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        startPosLabel1.setText("Posizione iniziale");
+
+        rotLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        rotLabel1.setText("Rotore 1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rotLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rotLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rotLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(rotSpinner3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rotSpinner2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rotSpinner1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(startPosLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(startPosLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(startPosLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(startPosSpinner2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(startPosSpinner1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(startPosSpinner3)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rotLabel1)
+                    .addComponent(rotSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startPosLabel1)
+                    .addComponent(startPosSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startPosLabel2)
+                    .addComponent(startPosSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rotLabel2)
+                    .addComponent(rotSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startPosLabel3)
+                    .addComponent(startPosSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rotLabel3)
+                    .addComponent(rotSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "SCAMBIATORE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tempus Sans ITC", 0, 18))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel3.setText("Coppie");
+
+        scambiatoreTextField.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        scambiatoreTextField.setToolTipText("Inserire le coppie separate da uno spazio.");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(scambiatoreTextField)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scambiatoreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap())
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "RIFLETTORE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tempus Sans ITC", 0, 18))); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel6.setText("Coppie");
+
+        riflettoreTextField.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        riflettoreTextField.setToolTipText("Inserire le coppie separate da uno spazio.");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(riflettoreTextField)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(riflettoreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap())
+        );
+
+        annullaButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        annullaButton.setText("Annulla");
+        annullaButton.setPreferredSize(new java.awt.Dimension(180, 45));
+        annullaButton.setRequestFocusEnabled(false);
+        annullaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                annullaButtonMouseClicked(evt);
+            }
+        });
+
+        confermaButton.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        confermaButton.setText("Conferma");
+        confermaButton.setPreferredSize(new java.awt.Dimension(180, 45));
+        confermaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confermaButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(annullaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                        .addGap(130, 130, 130)
+                        .addComponent(confermaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -69,49 +286,86 @@ public class CongifJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(527, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(annullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confermaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CongifJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CongifJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CongifJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CongifJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void annullaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_annullaButtonMouseClicked
+        dispose();
+    }//GEN-LAST:event_annullaButtonMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CongifJFrame().setVisible(true);
-            }
-        });
+    private void confermaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confermaButtonMouseClicked
+        String [] temp = new String[3];
+        temp[0] = ""+(int)rotSpinner1.getValue();
+        temp[1] = ""+(int)rotSpinner2.getValue();
+        temp[2] = ""+(int)rotSpinner3.getValue();
+        c.setRot(temp);
+        temp[0] = ""+(int) startPosSpinner1.getValue();
+        temp[1] = ""+(int) startPosSpinner2.getValue();
+        temp[2] = ""+(int) startPosSpinner3.getValue();
+        c.setStartPos(temp);
+        c.setPlugboard(scambiatoreTextField.getText().toUpperCase().split(" "));
+        c.setReflector(this.riflettoreTextField.getText().toUpperCase().split(" "));
+        scriviFile(c.toString());
+        dispose();
+    }//GEN-LAST:event_confermaButtonMouseClicked
+
+    private void scriviFile(String text){
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileOutputStream(this.filename));
+            out.write(text);
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "ERRORE SCRITTURA FILE");
+        } finally {
+            out.close();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton annullaButton;
+    private javax.swing.JButton confermaButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField riflettoreTextField;
+    private javax.swing.JLabel rotLabel1;
+    private javax.swing.JLabel rotLabel2;
+    private javax.swing.JLabel rotLabel3;
+    private javax.swing.JSpinner rotSpinner1;
+    private javax.swing.JSpinner rotSpinner2;
+    private javax.swing.JSpinner rotSpinner3;
+    private javax.swing.JTextField scambiatoreTextField;
+    private javax.swing.JLabel startPosLabel1;
+    private javax.swing.JLabel startPosLabel2;
+    private javax.swing.JLabel startPosLabel3;
+    private javax.swing.JSpinner startPosSpinner1;
+    private javax.swing.JSpinner startPosSpinner2;
+    private javax.swing.JSpinner startPosSpinner3;
     // End of variables declaration//GEN-END:variables
 }

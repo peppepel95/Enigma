@@ -45,4 +45,12 @@ public class Riflettore {
         System.out.println(c);
         //System.out.println(r.reflectMap.toString());
     }
+    
+    public String toString(){
+        String s = "";
+        for (String temp: reflector){
+            s += temp + " ";
+        }
+        return s;
+    }
 }

@@ -58,4 +58,13 @@ public class Configuration {
     public void setReflector(String[] Reflector) {
         this.Reflector = new Riflettore(Reflector);
     }
+    
+    public String toString(){
+        String s = "";
+        s += "Rotori: "+(this.Rot[0]+1)+", "+(this.Rot[1]+1)+", "+(this.Rot[2]+1)+"\n";
+        s += "Posizione iniziale: "+(this.StartPos[0])+", "+(this.StartPos[1])+", "+(this.StartPos[2])+"\n";
+        s += "Scambiatore: "+this.Plugboard+"\n";
+        s += "Riflettore: "+this.Reflector;
+        return s;
+    }
 }

@@ -225,6 +225,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_riallineaButtonMouseClicked
 
     private void changeConfigButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeConfigButtonMouseClicked
+        CongifJFrame f = new CongifJFrame(enigma.getConfiguration());
+        f.setVisible(true);
+        setVisible(false);
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent evt) {
+                setVisible(true);
+            }
+        });
         
     }//GEN-LAST:event_changeConfigButtonMouseClicked
 

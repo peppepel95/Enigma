@@ -51,6 +51,10 @@ public class Enigma {
             JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
         }
     }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
     
     private void getRotori(ArrayList<Rotore> arr,int[] index) {
         this.rotore1 = arr.get(index[0]);
@@ -112,7 +116,7 @@ public class Enigma {
      */
     public static void main(String[] args) {
         Enigma temp = new Enigma();
-        System.out.println(temp.codifica('I'));
+        System.out.println(temp.configuration.toString());
         System.out.println(temp.codifica('B'));
     }
 
