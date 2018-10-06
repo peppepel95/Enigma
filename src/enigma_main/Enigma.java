@@ -68,6 +68,13 @@ public class Enigma {
         if (input == ' '){
             return ' ';
         }
+        this.rotore1.rotate();
+        if (this.rotore1.getOffset() == this.initial_position[0]) {
+            this.rotore2.rotate();
+            if (this.rotore2.getOffset() == this.initial_position[1]) {
+                this.rotore3.rotate();
+            }
+        }
         char c = this.scambiatore.Swap(input);
         c = this.rotore1.translate(c, true);
         c = this.rotore2.translate(c, true);
@@ -77,13 +84,6 @@ public class Enigma {
         c = this.rotore2.translate(c, false);
         c = this.rotore1.translate(c, false);
         c = this.scambiatore.Swap(c);
-        this.rotore1.rotate();
-        if (this.rotore1.getOffset() == this.initial_position[0]) {
-            this.rotore2.rotate();
-            if (this.rotore2.getOffset() == this.initial_position[1]) {
-                this.rotore3.rotate();
-            }
-        }
         return c;
     }
 
