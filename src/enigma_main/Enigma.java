@@ -73,9 +73,9 @@ public class Enigma {
             return ' ';
         }
         this.rotore1.rotate();
-        if (this.rotore1.getOffset() == this.initial_position[0]) {
+        if (this.rotore1.getOffset() == 0) {
             this.rotore2.rotate();
-            if (this.rotore2.getOffset() == this.initial_position[1]) {
+            if (this.rotore2.getOffset() == 0) {
                 this.rotore3.rotate();
             }
         }
