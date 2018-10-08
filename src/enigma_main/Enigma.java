@@ -28,7 +28,7 @@ public class Enigma {
     private Riflettore riflettore;
     private Configuration configuration;
     private int[] initial_position;
-    private ArrayList<Rotore> arrRot;
+    private ArrayList<String> arrRot;
 
     public Enigma() {
         StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
@@ -56,10 +56,10 @@ public class Enigma {
         return configuration;
     }
     
-    private void getRotori(ArrayList<Rotore> arr,int[] index) {
-        this.rotore1 = arr.get(index[0]);
-        this.rotore2 = arr.get(index[1]);
-        this.rotore3 = arr.get(index[2]);
+    private void getRotori(ArrayList<String> arr,int[] index) {
+        this.rotore1 = new Rotore(arr.get(index[0]), this.configuration.getStartPos()[0]);
+        this.rotore2 = new Rotore(arr.get(index[1]), this.configuration.getStartPos()[1]);
+        this.rotore3 = new Rotore(arr.get(index[2]), this.configuration.getStartPos()[2]);
     }
     
     public final void riallinea(){
@@ -116,8 +116,8 @@ public class Enigma {
      */
     public static void main(String[] args) {
         Enigma temp = new Enigma();
+        System.out.println(temp.codifica('M'));
         System.out.println(temp.configuration.toString());
-        System.out.println(temp.codifica('B'));
     }
 
 }

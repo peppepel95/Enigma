@@ -17,7 +17,7 @@ import java.util.Arrays;
  * @author peppepel95
  */
 public class StartUpEnigma extends ReadFile{
-    private final ArrayList<Rotore> rotori;
+    private final ArrayList<String> rotori;
     private final String rot;
     private final String config;
     private Configuration config_obj;
@@ -37,7 +37,7 @@ public class StartUpEnigma extends ReadFile{
         this.readText(this.rot, "setRotori");
     }
 
-    public ArrayList<Rotore> getRotori() throws IOException, Exception {
+    public ArrayList<String> getRotori() throws IOException, Exception {
         if (this.rotori.isEmpty())
             this.setRotori();
         return rotori;
@@ -58,7 +58,7 @@ public class StartUpEnigma extends ReadFile{
         
         if (type.equals("setRotori")) {
             if (!result.contains("Rotore")) {
-                rotori.add(new Rotore(result));
+                rotori.add(result);
             }
         }
         if (type.equals("setConfiguration")) {
@@ -109,7 +109,7 @@ public class StartUpEnigma extends ReadFile{
     
     public static void main(String[] args) throws IOException, Exception {
         StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
-        ArrayList<Rotore> rotori = rif.getRotori();
+        ArrayList<String> rotori = rif.getRotori();
         System.out.println(rotori);
         Configuration config = rif.getConfiguration();
         System.out.println(config);

@@ -14,12 +14,17 @@ public class Rotore {
     private final int[] DirectRotor;
     private final int[] InverseRotor;
     private int offset;
-
     public Rotore(String rotor) {
+        this(rotor, 0);
+    }
+
+    public Rotore(String rotor, int offset) {
         this.DirectRotor = new int[26];
         this.InverseRotor = new int[26];
         int index;
-        char c;        
+        char c;
+        if (offset > 0)
+            rotor = rotor.substring(offset) + rotor.substring(0, offset);
         
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);
@@ -28,21 +33,6 @@ public class Rotore {
             InverseRotor[i] = index;
         }
         this.offset = 0;
-    }
-
-    public Rotore(String rotor, int offset) {
-        this.DirectRotor = new int[26];
-        this.InverseRotor = new int[26];
-        int index;
-        char c;        
-        
-        for (int i = 0; i < rotor.length(); i++) {
-            c = rotor.charAt(i);
-            index = (int) c - 65;
-            DirectRotor[index] = i;
-            InverseRotor[i] = index;
-        }
-        this.offset = offset;
     }
 
     public int[] getDirectRotor() {
@@ -119,39 +109,44 @@ public class Rotore {
         String s1 = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
         String s2 = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
         String s3 = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-        Rotore r1 = new Rotore(s1,0);//12
-        Rotore r2 = new Rotore(s2,0);//5
-        Rotore r3 = new Rotore(s3,0);//24
+        Rotore r1 = new Rotore(s1,12);//12
+        Rotore r2 = new Rotore(s2,5);//5
+        Rotore r3 = new Rotore(s3,24);//24
         Riflettore s = new Riflettore("IU AS DV GL FT OX EZ CH MR KN BQ PW JY".split(" "));
         System.out.println(r1.toString());
         System.out.println(r2.toString());
         System.out.println(r3.toString());
         
-        
-        int input = 'A';
         //prima traduzione, andata
-        int output = r1.translate(input, true);
-        System.out.println(output + " " + (int)(output - 65));
-        //seconda traduzione, andata
-        output = r2.translate(output, true);
-        System.out.println(output + " " + (int)(output - 65));
-        //terza traduzione, andata
-        output = r3.translate(output, true);
-        System.out.println(output + " " + (int)(output - 65));
-        //riflettore
-        output = s.reflect(output);
-        System.out.println("-----");
-        System.out.println(output + " " + (int)(output - 65));
-        System.out.println("-----");
-        //terza traduzione, ritorno
-        output = r3.translate(output, false);
-        System.out.println(output + " " + (int)(output - 65));
-        //seconda traduzione, ritorno
-        output = r2.translate(output, false);
-        System.out.println(output + " " + (int)(output - 65));
-        //prima traduzione, ritorno
-        output = r1.translate(input, false);
-        System.out.println(output + " " + (int)(output - 65));
+        int output;
+        output = r1.translate(0, true);
+        System.out.println(output);
+        r1.rotate();
+        output = r1.translate(0, true);
+        System.out.println(output);
+        
+        
+//        //seconda traduzione, andata
+//        output = r2.translate(output, false);
+//        System.out.println(output);
+//        //terza traduzione, andata
+//        output = r1.translate(output, false);
+//        System.out.println(output);
+        
+//        //riflettore
+//        output = s.reflect(output);
+//        System.out.println("-----");
+//        System.out.println(output + " " + (int)(output - 65));
+//        System.out.println("-----");
+//        //terza traduzione, ritorno
+//        output = r3.translate(output, false);
+//        System.out.println(output + " " + (int)(output - 65));
+//        //seconda traduzione, ritorno
+//        output = r2.translate(output, false);
+//        System.out.println(output + " " + (int)(output - 65));
+//        //prima traduzione, ritorno
+//        output = r1.translate(input, false);
+//        System.out.println(output + " " + (int)(output - 65));
 
     }
 }

@@ -14,8 +14,8 @@ public class Scambiatore extends Riflettore{
         super(reflector);
     }
     
-    public int Swap(int character) {
-        return super.reflect(character);
+    public int Swap(int pos) {
+        return super.reflect(pos);
     }
     
     public static void main(String[] args) {

@@ -20,19 +20,19 @@ public class Riflettore {
         this.reflector = reflector;
     }
     
-    public int reflect(int character) {
+    public int reflect(int pos) {
         if (reflectMap.isEmpty()) {
             this.getMap();
         }
-        if (reflectMap.containsKey(character))
-            return reflectMap.get(character);
-        return character;
+        if (reflectMap.containsKey(pos))
+            return reflectMap.get(pos);
+        return pos;
     }
 
     private void getMap() {
         for (String reflector1 : reflector) {
-            this.reflectMap.put((int)(reflector1.charAt(0) - 65), (int)(reflector1.charAt(1) - 65));
-            this.reflectMap.put((int)(reflector1.charAt(1) - 65), (int)(reflector1.charAt(0) - 65));
+            this.reflectMap.put(reflector1.charAt(0) - 65,reflector1.charAt(1) - 65);
+            this.reflectMap.put(reflector1.charAt(1) - 65,reflector1.charAt(0) - 65);
         }
     }
     
@@ -48,10 +48,6 @@ public class Riflettore {
     
     @Override
     public String toString(){
-        String s = "";
-        for (String temp: reflector){
-            s += temp + " ";
-        }
-        return s;
+        return reflectMap.toString();
     }
 }

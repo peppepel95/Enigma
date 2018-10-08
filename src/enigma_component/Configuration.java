@@ -59,6 +59,7 @@ public class Configuration {
         this.Reflector = new Riflettore(Reflector);
     }
     
+    @Override
     public String toString(){
         String s = "";
         s += "Rotori: "+(this.Rot[0]+1)+", "+(this.Rot[1]+1)+", "+(this.Rot[2]+1)+"\n";
