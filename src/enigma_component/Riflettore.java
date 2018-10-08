@@ -48,6 +48,10 @@ public class Riflettore {
     
     @Override
     public String toString(){
-        return reflectMap.toString();
+        String s = "";
+        for (String temp: reflector){
+            s += temp + " ";
+        }
+        return s;
     }
 }

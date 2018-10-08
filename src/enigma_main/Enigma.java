@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Enigma {
     private static final int NUMERO_ROTORI = 3;
-    private static final int LUNG_ALF = 26;
+    public static final int LUNG_ALF = 26;
     private static final int MIN_PLUG = 7;
     private static final int MAX_PLUG = 10;
     

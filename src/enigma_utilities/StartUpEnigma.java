@@ -6,6 +6,7 @@
 package enigma_utilities;
 
 import enigma_component.*;
+import enigma_main.Enigma;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,8 +82,9 @@ public class StartUpEnigma extends ReadFile{
                     this.config_obj.setPlugboard(items);
                     break;
                 case "Riflettore":
-                    String[] new_items = StartUpEnigma.findLast(items);
-                    this.config_obj.setReflector(new_items);
+                    if (items.length == Enigma.LUNG_ALF/2 - 1)
+                        items = StartUpEnigma.findLast(items);
+                    this.config_obj.setReflector(items);
                     break;
                 default:
                     throw new Exception();
