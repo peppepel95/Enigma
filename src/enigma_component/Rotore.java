@@ -5,6 +5,8 @@
  */
 package enigma_component;
 
+import enigma_main.Enigma;
+
 /**
  *
  * @author peppepel95
@@ -24,7 +26,9 @@ public class Rotore {
         int index;
         char c;
         if (offset > 0)
-            rotor = rotor.substring(offset) + rotor.substring(0, offset);
+            rotor = rotor.substring(Enigma.LUNG_ALF - offset) + rotor.substring(0, Enigma.LUNG_ALF - offset);
+        
+        System.out.println(rotor);
         
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);

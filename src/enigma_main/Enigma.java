@@ -35,7 +35,9 @@ public class Enigma {
         try {
             this.configuration = rif.getConfiguration();
             this.scambiatore = this.configuration.getPlugboard();
+            System.out.println(this.scambiatore.toString());
             this.riflettore = this.configuration.getReflector();
+            System.out.println(this.riflettore.toString());
             this.initial_position = this.configuration.getStartPos();
         } catch (Exception ex) {
             System.err.println(Arrays.toString(ex.getStackTrace()));
@@ -58,14 +60,17 @@ public class Enigma {
     
     private void getRotori(ArrayList<String> arr,int[] index) {
         this.rotore1 = new Rotore(arr.get(index[0]), this.configuration.getStartPos()[0]);
+        System.out.println(this.rotore1.toString());
         this.rotore2 = new Rotore(arr.get(index[1]), this.configuration.getStartPos()[1]);
+        System.out.println(this.rotore2.toString());
         this.rotore3 = new Rotore(arr.get(index[2]), this.configuration.getStartPos()[2]);
+        System.out.println(this.rotore3.toString());
     }
     
     public final void riallinea(){
-        this.rotore1.setOffset(initial_position[0]);
-        this.rotore2.setOffset(initial_position[1]);
-        this.rotore3.setOffset(initial_position[2]);
+        this.rotore1.setOffset(0);
+        this.rotore2.setOffset(0);
+        this.rotore3.setOffset(0);
     }
 
     public char codifica(char input) {
@@ -116,8 +121,8 @@ public class Enigma {
      */
     public static void main(String[] args) {
         Enigma temp = new Enigma();
-        System.out.println(temp.codifica('M'));
-        System.out.println(temp.configuration.toString());
+        System.out.println(temp.codifica('P'));
+        System.out.println(temp.codifica('A'));
     }
 
 }
