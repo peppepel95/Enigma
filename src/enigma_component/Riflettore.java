@@ -12,30 +12,32 @@ import java.util.HashMap;
  * @author peppepel95
  */
 public class Riflettore {
-    private final HashMap<Integer,Integer> reflectMap;
-    String[]  reflector;
-    
-    public Riflettore(String[]  reflector) {
+
+    private final HashMap<Integer, Integer> reflectMap;
+    String[] reflector;
+
+    public Riflettore(String[] reflector) {
         this.reflectMap = new HashMap<>();
         this.reflector = reflector;
     }
-    
+
     public int reflect(int pos) {
         if (reflectMap.isEmpty()) {
             this.getMap();
         }
-        if (reflectMap.containsKey(pos))
+        if (reflectMap.containsKey(pos)) {
             return reflectMap.get(pos);
+        }
         return pos;
     }
 
     private void getMap() {
         for (String reflector1 : reflector) {
-            this.reflectMap.put(reflector1.charAt(0) - 65,reflector1.charAt(1) - 65);
-            this.reflectMap.put(reflector1.charAt(1) - 65,reflector1.charAt(0) - 65);
+            this.reflectMap.put(reflector1.charAt(0) - 65, reflector1.charAt(1) - 65);
+            this.reflectMap.put(reflector1.charAt(1) - 65, reflector1.charAt(0) - 65);
         }
     }
-    
+
     public static void main(String[] args) {
         String[] s = new String[2];
         s[0] = "AB";
@@ -45,13 +47,18 @@ public class Riflettore {
         System.out.println(c);
         //System.out.println(r.reflectMap.toString());
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String s = "";
-        for (String temp: reflector){
+        String s1;
+        for (String temp : reflector) {
             s += temp + " ";
         }
-        return s;
+        if (this instanceof Scambiatore)
+            s1 = "Scambiatore: \n";
+        else
+            s1 = "Riflettore: \n";
+        return s1 + s + '\n';
     }
 }

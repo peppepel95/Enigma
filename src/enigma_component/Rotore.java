@@ -16,6 +16,8 @@ public class Rotore {
     private final int[] DirectRotor;
     private final int[] InverseRotor;
     private int offset;
+    private final String rotorStr;
+    
     public Rotore(String rotor) {
         this(rotor, 0);
     }
@@ -27,8 +29,7 @@ public class Rotore {
         char c;
         if (offset > 0)
             rotor = rotor.substring(Enigma.LUNG_ALF - offset) + rotor.substring(0, Enigma.LUNG_ALF - offset);
-        
-        System.out.println(rotor);
+        this.rotorStr = rotor;
         
         for (int i = 0; i < rotor.length(); i++) {
             c = rotor.charAt(i);
@@ -71,7 +72,7 @@ public class Rotore {
             dir += (this.DirectRotor[(i - offset + 26) % 26]) + " ";
             inv += (this.InverseRotor[(i - offset + 26) % 26]) + " ";
         }
-        return "Rotore{" + "DirectRotor=" + dir + ", InverseRotor=" + inv + '}';
+        return "Rotore:\n" + this.rotorStr + "\nDirectRotor=" + dir + "\nInverseRotor=" + inv + '\n';
     }
     
     
@@ -121,36 +122,11 @@ public class Rotore {
         System.out.println(r2.toString());
         System.out.println(r3.toString());
         
-        //prima traduzione, andata
         int output;
         output = r1.translate(0, true);
         System.out.println(output);
         r1.rotate();
         output = r1.translate(0, true);
         System.out.println(output);
-        
-        
-//        //seconda traduzione, andata
-//        output = r2.translate(output, false);
-//        System.out.println(output);
-//        //terza traduzione, andata
-//        output = r1.translate(output, false);
-//        System.out.println(output);
-        
-//        //riflettore
-//        output = s.reflect(output);
-//        System.out.println("-----");
-//        System.out.println(output + " " + (int)(output - 65));
-//        System.out.println("-----");
-//        //terza traduzione, ritorno
-//        output = r3.translate(output, false);
-//        System.out.println(output + " " + (int)(output - 65));
-//        //seconda traduzione, ritorno
-//        output = r2.translate(output, false);
-//        System.out.println(output + " " + (int)(output - 65));
-//        //prima traduzione, ritorno
-//        output = r1.translate(input, false);
-//        System.out.println(output + " " + (int)(output - 65));
-
     }
 }
