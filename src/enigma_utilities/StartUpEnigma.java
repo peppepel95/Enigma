@@ -30,21 +30,21 @@ public class StartUpEnigma extends ReadFile{
         this.config_obj = null;
     }
 
-    private void setConfiguration() {
+    private void setConfiguration() throws IOException, Exception {
         this.readText(this.config, "setConfiguration");
     }
     
-    private void setRotori() {
+    private void setRotori() throws IOException, Exception {
         this.readText(this.rot, "setRotori");
     }
 
-    public ArrayList<String> getRotori() {
+    public ArrayList<String> getRotori() throws IOException, Exception {
         if (this.rotori.isEmpty())
             this.setRotori();
         return rotori;
     }
     
-    public Configuration getConfiguration(){
+    public Configuration getConfiguration() throws Exception {
         if (this.config_obj == null) {
             this.config_obj = new Configuration();
             this.setConfiguration();
@@ -53,7 +53,7 @@ public class StartUpEnigma extends ReadFile{
     }
     
     @Override
-    public void hook(String type, String result) throws IllegalArgumentException {
+    public void hook(String type, String result) throws Exception {
         String pattern;
         String[] str;
         
@@ -87,7 +87,7 @@ public class StartUpEnigma extends ReadFile{
                     this.config_obj.setReflector(items);
                     break;
                 default:
-                    throw new IllegalArgumentException();
+                    throw new Exception();
             }
         }
     }
@@ -109,7 +109,7 @@ public class StartUpEnigma extends ReadFile{
         return new_items;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, Exception {
         StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
         ArrayList<String> rotori = rif.getRotori();
         System.out.println(rotori);
