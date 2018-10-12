@@ -53,7 +53,7 @@ public class Rotore {
     }
 
     public void rotate() {
-        this.offset = (this.offset + 1) % 26;
+        this.rotate(1);
     }
 
     public void rotate(int offset) {
