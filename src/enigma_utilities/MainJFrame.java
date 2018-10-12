@@ -242,7 +242,7 @@ public class MainJFrame extends javax.swing.JFrame {
         setVisible(false);
         f.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent evt) {
-                String outputText = codificaTesto(f.getText());
+                String outputText = codificaTesto(f.getText().toUpperCase());
                 mainTextArea.setText(outputText);
                 setVisible(true);
             }
@@ -256,7 +256,7 @@ public class MainJFrame extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             JOptionPane.showMessageDialog(null, "Apertura file completata!");
             String input = leggiFile(frame.getSelectedFile().getAbsolutePath());
-            String outputText = codificaTesto(input);
+            String outputText = codificaTesto(input.toUpperCase());
             mainTextArea.setText(outputText);
         } else {
             JOptionPane.showMessageDialog(null, "Si è verificato un errore!");
