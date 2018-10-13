@@ -59,12 +59,17 @@ public class Enigma {
     }
     
     private void getRotori(ArrayList<String> arr,int[] index) {
-        this.rotore1 = new Rotore(arr.get(index[0]), this.configuration.getStartPos()[0]);
-        System.out.println(this.rotore1.toString());
-        this.rotore2 = new Rotore(arr.get(index[1]), this.configuration.getStartPos()[1]);
-        System.out.println(this.rotore2.toString());
-        this.rotore3 = new Rotore(arr.get(index[2]), this.configuration.getStartPos()[2]);
-        System.out.println(this.rotore3.toString());
+        try{
+            this.rotore1 = new Rotore(arr.get(index[0]), this.configuration.getStartPos()[0]);
+            System.out.println(this.rotore1.toString());
+            this.rotore2 = new Rotore(arr.get(index[1]), this.configuration.getStartPos()[1]);
+            System.out.println(this.rotore2.toString());
+            this.rotore3 = new Rotore(arr.get(index[2]), this.configuration.getStartPos()[2]);
+            System.out.println(this.rotore3.toString());
+        } catch (Exception e){
+            System.err.println(Arrays.toString(e.getStackTrace()));
+            JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
+        }
     }
     
     public final void riallinea(){

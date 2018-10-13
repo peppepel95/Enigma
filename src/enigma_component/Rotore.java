@@ -18,15 +18,18 @@ public class Rotore {
     private int offset;
     private final String rotorStr;
     
-    public Rotore(String rotor) {
+    public Rotore(String rotor) throws Exception {
         this(rotor, 0);
     }
 
-    public Rotore(String rotor, int offset) {
+    public Rotore(String rotor, int offset) throws Exception {
         this.DirectRotor = new int[26];
         this.InverseRotor = new int[26];
         int index;
         char c;
+        
+        checkRotor(rotor);
+        
         if (offset > 0)
             rotor = rotor.substring(Enigma.LUNG_ALF - offset) + rotor.substring(0, Enigma.LUNG_ALF - offset);
         this.rotorStr = rotor;
@@ -77,7 +80,7 @@ public class Rotore {
     
     
     
-    public int  translate(int value, boolean direction) {
+    public int translate(int value, boolean direction) {
         if (direction) {
             value = (DirectRotor[(value - offset + 26) % 26] + offset) % 26;
         } else {
@@ -86,6 +89,19 @@ public class Rotore {
         return value;
     }
     
+    private void checkRotor(String rotor) throws Exception{
+        int[] checkVector = new int[26];
+        int index, sum = 0;
+        for (int i=0; i<rotor.length(); i++){
+            index = (int)(rotor.charAt(i) - 56);
+            checkVector[index] = 1;
+        }
+        for (int i=0; i<rotor.length(); i++){
+            sum += checkVector[i];
+        }
+        if (sum==rotor.length())
+            throw new Exception();
+    }
     /*
     Rotori: 3, 4, 1
     Posizione iniziale: 12, 5, 24
@@ -114,19 +130,25 @@ public class Rotore {
         String s1 = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
         String s2 = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
         String s3 = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-        Rotore r1 = new Rotore(s1,12);//12
-        Rotore r2 = new Rotore(s2,5);//5
-        Rotore r3 = new Rotore(s3,24);//24
-        Riflettore s = new Riflettore("IU AS DV GL FT OX EZ CH MR KN BQ PW JY".split(" "));
-        System.out.println(r1.toString());
-        System.out.println(r2.toString());
-        System.out.println(r3.toString());
+        try{
+            Rotore r1 = new Rotore(s1,12);//12
+            Rotore r2 = new Rotore(s2,5);//5
+            Rotore r3 = new Rotore(s3,24);//24
         
-        int output;
-        output = r1.translate(0, true);
-        System.out.println(output);
-        r1.rotate();
-        output = r1.translate(0, true);
-        System.out.println(output);
+            
+            Riflettore s = new Riflettore("IU AS DV GL FT OX EZ CH MR KN BQ PW JY".split(" "));
+            System.out.println(r1.toString());
+            System.out.println(r2.toString());
+            System.out.println(r3.toString());
+
+            int output;
+            output = r1.translate(0, true);
+            System.out.println(output);
+            r1.rotate();
+            output = r1.translate(0, true);
+            System.out.println(output);
+        } catch (Exception e){
+            System.out.println("rotore non conforme");
+        }
     }
 }
