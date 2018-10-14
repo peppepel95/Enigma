@@ -121,11 +121,19 @@ public class StartUpEnigma extends ReadFile {
             case "Scambiatore":
                 if (items.length > 10 || items.length < 7 || !StartUpEnigma.validate(String.join("", items)))
                     throw new IllegalArgumentException();
+                for (String item : items) {
+                    if (item.length() != 2)
+                        throw new IllegalArgumentException();
+                }
                 this.config_obj.setPlugboard(items);
                 break;
             case "Riflettore":
                 if ((items.length != 12 && items.length != 13) || !StartUpEnigma.validate(String.join("", items)))
                     throw new IllegalArgumentException();
+                for (String item : items) {
+                    if (item.length() != 2)
+                        throw new IllegalArgumentException();
+                }
                 if (items.length == 12) {
                     items = StartUpEnigma.findLast(items);
                 }

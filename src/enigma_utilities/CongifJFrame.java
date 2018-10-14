@@ -347,12 +347,24 @@ public class CongifJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
             throw new IllegalArgumentException();
         }
+        for (String item : temp) {
+            if (item.length() != 2) {
+                JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+                throw new IllegalArgumentException();
+            }
+        }
         c.setPlugboard(temp);
         System.out.println(scambiatoreTextField.getText());
         temp = this.riflettoreTextField.getText().toUpperCase().split(" ");
         if ((temp.length != 12 && temp.length != 13) || !StartUpEnigma.validate(String.join("", temp))) {
             JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
             throw new IllegalArgumentException();
+        }
+        for (String item : temp) {
+            if (item.length() != 2) {
+                JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+                throw new IllegalArgumentException();
+            }
         }
         if (temp.length == 12) {
             temp = StartUpEnigma.findLast(temp);
