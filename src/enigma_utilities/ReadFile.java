@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 public abstract class ReadFile {
     
-    public void readText(String file, String type) throws FileNotFoundException, IOException, Exception {
+    public void readText(String file, String type) throws FileNotFoundException, IOException, IllegalArgumentException {
         String result;
         boolean eof = false;
         FileReader filein = new FileReader(file + ".txt");
@@ -32,5 +32,5 @@ public abstract class ReadFile {
         }
     }
 
-    public abstract void hook(String type, String result) throws Exception;
+    public abstract void hook(String type, String result) throws IllegalArgumentException;
 }

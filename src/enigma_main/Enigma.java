@@ -7,6 +7,7 @@ package enigma_main;
 
 import enigma_component.*;
 import enigma_utilities.StartUpEnigma;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -39,7 +40,7 @@ public class Enigma {
             this.riflettore = this.configuration.getReflector();
             System.out.println(this.riflettore.toString());
             this.initial_position = this.configuration.getStartPos();
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException | IOException ex) {
             System.err.println(Arrays.toString(ex.getStackTrace()));
             JOptionPane.showMessageDialog(null, "Impossibile caricare configurazione!");
         }
@@ -48,7 +49,7 @@ public class Enigma {
             int[] index = this.configuration.getRot();
             this.getRotori(arrRot, index);
             this.riallinea();
-        } catch (Exception ex) {
+        } catch (IOException | IllegalArgumentException ex) {
             System.err.println(Arrays.toString(ex.getStackTrace()));
             JOptionPane.showMessageDialog(null, "Impossibile caricare rotori!");
         }

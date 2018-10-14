@@ -28,8 +28,6 @@ public class Rotore {
         int index;
         char c;
         
-        checkRotor(rotor);
-        
         if (offset > 0)
             rotor = rotor.substring(Enigma.LUNG_ALF - offset) + rotor.substring(0, Enigma.LUNG_ALF - offset);
         this.rotorStr = rotor;
@@ -87,20 +85,6 @@ public class Rotore {
             value = (InverseRotor[(value - offset + 26) % 26] + offset) % 26; 
         }
         return value;
-    }
-    
-    private void checkRotor(String rotor) throws Exception{
-        int[] checkVector = new int[26];
-        int index, sum = 0;
-        for (int i=0; i<rotor.length(); i++){
-            index = (int)(rotor.charAt(i) - 56);
-            checkVector[index] = 1;
-        }
-        for (int i=0; i<rotor.length(); i++){
-            sum += checkVector[i];
-        }
-        if (sum==rotor.length())
-            throw new Exception();
     }
     /*
     Rotori: 3, 4, 1
