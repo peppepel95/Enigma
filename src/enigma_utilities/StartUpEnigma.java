@@ -119,12 +119,12 @@ public class StartUpEnigma extends ReadFile {
                 this.config_obj.setStartPos(items);
                 break;
             case "Scambiatore":
-                if (items.length > 10 || items.length < 7 || !this.validate(String.join("", items)))
+                if (items.length > 10 || items.length < 7 || !StartUpEnigma.validate(String.join("", items)))
                     throw new IllegalArgumentException();
                 this.config_obj.setPlugboard(items);
                 break;
             case "Riflettore":
-                if ((items.length != 12 && items.length != 13) || !this.validate(String.join("", items)))
+                if ((items.length != 12 && items.length != 13) || !StartUpEnigma.validate(String.join("", items)))
                     throw new IllegalArgumentException();
                 if (items.length == 12) {
                     items = StartUpEnigma.findLast(items);
@@ -136,7 +136,7 @@ public class StartUpEnigma extends ReadFile {
         }
     }
 
-    private boolean validate(String s) {
+    public static boolean validate(String s) {
         System.out.println(s);
         if (!s.matches("[A-Z]+"))
             return false;

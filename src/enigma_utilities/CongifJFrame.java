@@ -17,9 +17,10 @@ import javax.swing.JOptionPane;
  * @author coluc
  */
 public class CongifJFrame extends javax.swing.JFrame {
+
     private String filename;
     private Configuration c;
-    
+
     /**
      * Creates new form CongifJFrame
      */
@@ -27,9 +28,9 @@ public class CongifJFrame extends javax.swing.JFrame {
         initComponents();
         this.filename = "configurazione.txt";
         this.c = c;
-        rotSpinner1.setValue(c.getRot()[0]+1);
-        rotSpinner2.setValue(c.getRot()[1]+1);
-        rotSpinner3.setValue(c.getRot()[2]+1);
+        rotSpinner1.setValue(c.getRot()[0] + 1);
+        rotSpinner2.setValue(c.getRot()[1] + 1);
+        rotSpinner3.setValue(c.getRot()[2] + 1);
         startPosSpinner1.setValue(c.getStartPos()[0]);
         startPosSpinner2.setValue(c.getStartPos()[1]);
         startPosSpinner3.setValue(c.getStartPos()[2]);
@@ -308,27 +309,62 @@ public class CongifJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_annullaButtonMouseClicked
 
     private void confermaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confermaButtonMouseClicked
-        String [] temp = new String[3];
-        temp[0] = ""+(int)rotSpinner1.getValue();
-        temp[1] = ""+(int)rotSpinner2.getValue();
-        temp[2] = ""+(int)rotSpinner3.getValue();
+        String[] temp = new String[3];
+        temp[0] = "" + (int) rotSpinner1.getValue();
+        temp[1] = "" + (int) rotSpinner2.getValue();
+        temp[2] = "" + (int) rotSpinner3.getValue();
         System.out.println(Arrays.toString(temp));
+        if (temp.length == 3) {
+            for (String item : temp) {
+                if (item.length() != 1 || item.charAt(0) < '0' + 1 || item.charAt(0) > '0' + 8) {
+                    JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+                    throw new IllegalArgumentException();
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+            throw new IllegalArgumentException();
+        }
         c.setRot(temp);
-        temp[0] = ""+(int) startPosSpinner1.getValue();
-        temp[1] = ""+(int) startPosSpinner2.getValue();
-        temp[2] = ""+(int) startPosSpinner3.getValue();
+        temp[0] = "" + (int) startPosSpinner1.getValue();
+        temp[1] = "" + (int) startPosSpinner2.getValue();
+        temp[2] = "" + (int) startPosSpinner3.getValue();
+        if (temp.length == 3) {
+            for (String item : temp) {
+                int num = Integer.parseInt(item);
+                if (num < 0 || num > 25) {
+                    JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+                    throw new IllegalArgumentException();
+                }
+            }
+        } else {
+            throw new IllegalArgumentException();
+        }
         c.setStartPos(temp);
         System.out.println(Arrays.toString(temp));
-        c.setPlugboard(scambiatoreTextField.getText().toUpperCase().split(" "));
+        temp = scambiatoreTextField.getText().toUpperCase().split(" ");
+        if (temp.length > 10 || temp.length < 7 || !StartUpEnigma.validate(String.join("", temp))) {
+            JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+            throw new IllegalArgumentException();
+        }
+        c.setPlugboard(temp);
         System.out.println(scambiatoreTextField.getText());
-        c.setReflector(this.riflettoreTextField.getText().toUpperCase().split(" "));
+        temp = this.riflettoreTextField.getText().toUpperCase().split(" ");
+        if ((temp.length != 12 && temp.length != 13) || !StartUpEnigma.validate(String.join("", temp))) {
+            JOptionPane.showMessageDialog(null, "Configurazione inserita non valida!");
+            throw new IllegalArgumentException();
+        }
+        if (temp.length == 12) {
+            temp = StartUpEnigma.findLast(temp);
+        }
+        c.setReflector(temp);
         System.out.println(this.riflettoreTextField.getText());
         scriviFile(c.toString());
         System.out.println(c.toString());
         dispose();
     }//GEN-LAST:event_confermaButtonMouseClicked
 
-    private void scriviFile(String text){
+    private void scriviFile(String text) {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileOutputStream(this.filename));
