@@ -32,8 +32,8 @@ public class CongifJFrame extends javax.swing.JFrame {
         startPosSpinner1.setValue(c.getStartPos()[0]);
         startPosSpinner2.setValue(c.getStartPos()[1]);
         startPosSpinner3.setValue(c.getStartPos()[2]);
-        scambiatoreTextField.setText(c.getPlugboard().toString());
-        riflettoreTextField.setText(c.getReflector().toString());
+        scambiatoreTextField.setText(c.getPlugboard().toString().split(": ")[1]);
+        riflettoreTextField.setText(c.getReflector().toString().split(": ")[1]);
     }
 
     /**
@@ -311,14 +311,19 @@ public class CongifJFrame extends javax.swing.JFrame {
         temp[0] = ""+(int)rotSpinner1.getValue();
         temp[1] = ""+(int)rotSpinner2.getValue();
         temp[2] = ""+(int)rotSpinner3.getValue();
+        System.out.println(temp);
         c.setRot(temp);
         temp[0] = ""+(int) startPosSpinner1.getValue();
         temp[1] = ""+(int) startPosSpinner2.getValue();
         temp[2] = ""+(int) startPosSpinner3.getValue();
         c.setStartPos(temp);
+        System.out.println(temp);
         c.setPlugboard(scambiatoreTextField.getText().toUpperCase().split(" "));
+        System.out.println(scambiatoreTextField.getText());
         c.setReflector(this.riflettoreTextField.getText().toUpperCase().split(" "));
+        System.out.println(this.riflettoreTextField.getText());
         scriviFile(c.toString());
+        System.out.println(c.toString());
         dispose();
     }//GEN-LAST:event_confermaButtonMouseClicked
 
