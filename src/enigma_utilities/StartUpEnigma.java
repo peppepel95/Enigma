@@ -169,13 +169,10 @@ public class StartUpEnigma extends ReadFile {
     }
 
     public static void main(String[] args) throws IOException, Exception {
-        String s = "12 34 23 44 55";
-        String[] arr = s.split(" ");
-        System.out.println(String.join("", arr));
-//        StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
-//        ArrayList<String> rotori = rif.getRotori();
-//        System.out.println(rotori);
-//        Configuration config = rif.getConfiguration();
-//        System.out.println(config);
+        StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
+        ArrayList<String> rotori = rif.getRotori();
+        System.out.println(rotori);
+        Configuration config = rif.getConfiguration();
+        System.out.println(config);
     }
 }
