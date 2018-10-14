@@ -18,11 +18,11 @@ public class Rotore {
     private int offset;
     private final String rotorStr;
     
-    public Rotore(String rotor) throws Exception {
+    public Rotore(String rotor){
         this(rotor, 0);
     }
 
-    public Rotore(String rotor, int offset) throws Exception {
+    public Rotore(String rotor, int offset){
         this.DirectRotor = new int[26];
         this.InverseRotor = new int[26];
         int index;
