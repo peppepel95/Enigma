@@ -17,13 +17,7 @@ import javax.swing.JOptionPane;
  * @author peppepel95
  */
 public abstract class ReadFile {
-<<<<<<< HEAD
-    
-    public void readText(String file, String type) throws FileNotFoundException, IOException, IllegalArgumentException {
-=======
-
     public void readText(String file, String type) {
->>>>>>> 82d66b2800eb374788903e873179c8088eed965e
         String result;
         boolean eof = false;
         FileReader filein;

@@ -31,7 +31,6 @@ public class StartUpEnigma extends ReadFile {
         this.config_obj = null;
     }
 
-<<<<<<< HEAD
     private void setConfiguration() throws IOException, IllegalArgumentException {
         this.readText(this.config, "setConfiguration");
     }
@@ -42,29 +41,12 @@ public class StartUpEnigma extends ReadFile {
 
     public ArrayList<String> getRotori() throws IOException, IllegalArgumentException {
         if (this.rotori.isEmpty()) {
-=======
-    private void setConfiguration() {
-        this.readText(this.config, "setConfiguration");
-    }
-    
-    private void setRotori() {
-        this.readText(this.rot, "setRotori");
-    }
-
-    public ArrayList<String> getRotori() {
-        if (this.rotori.isEmpty())
->>>>>>> 82d66b2800eb374788903e873179c8088eed965e
             this.setRotori();
         }
         return rotori;
     }
-<<<<<<< HEAD
 
     public Configuration getConfiguration() throws IllegalArgumentException, IOException {
-=======
-    
-    public Configuration getConfiguration() {
->>>>>>> 82d66b2800eb374788903e873179c8088eed965e
         if (this.config_obj == null) {
             this.config_obj = new Configuration();
             this.setConfiguration();
@@ -81,7 +63,6 @@ public class StartUpEnigma extends ReadFile {
             this.rotorHook(result);
         }
         if (type.equals("setConfiguration")) {
-<<<<<<< HEAD
             this.configHook(result);
         }
     }
@@ -91,34 +72,6 @@ public class StartUpEnigma extends ReadFile {
             if (result.length() != 26 || !this.validate(result))
                 throw new IllegalArgumentException();
             rotori.add(result);
-=======
-            str = result.split(": ");
-            if (str[1].contains(",")) {
-                pattern = ", ";
-            }
-            else {
-                pattern = " ";
-            }
-            String[] items = str[1].split(pattern);
-            switch (str[0]) {
-                case "Rotori":
-                    this.config_obj.setRot(items);
-                    break;
-                case "Posizione iniziale":
-                    this.config_obj.setStartPos(items);
-                    break;
-                case "Scambiatore":
-                    this.config_obj.setPlugboard(items);
-                    break;
-                case "Riflettore":
-                    if (items.length == Enigma.LUNG_ALF/2 - 1)
-                        items = StartUpEnigma.findLast(items);
-                    this.config_obj.setReflector(items);
-                    break;
-                default:
-                    throw new IllegalArgumentException();
-            }
->>>>>>> 82d66b2800eb374788903e873179c8088eed965e
         }
     }
 
@@ -214,7 +167,6 @@ public class StartUpEnigma extends ReadFile {
         new_items[new_items.length - 1] = new String(temp);
         return new_items;
     }
-<<<<<<< HEAD
 
     public static void main(String[] args) throws IOException, Exception {
         String s = "12 34 23 44 55";
@@ -225,14 +177,5 @@ public class StartUpEnigma extends ReadFile {
 //        System.out.println(rotori);
 //        Configuration config = rif.getConfiguration();
 //        System.out.println(config);
-=======
-    
-    public static void main(String[] args) {
-        StartUpEnigma rif = new StartUpEnigma("rotore", "configurazione");
-        ArrayList<String> rotori = rif.getRotori();
-        System.out.println(rotori);
-        Configuration config = rif.getConfiguration();
-        System.out.println(config);
->>>>>>> 82d66b2800eb374788903e873179c8088eed965e
     }
 }
