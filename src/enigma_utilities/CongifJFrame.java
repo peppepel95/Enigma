@@ -9,6 +9,7 @@ import enigma_component.Configuration;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -311,13 +312,13 @@ public class CongifJFrame extends javax.swing.JFrame {
         temp[0] = ""+(int)rotSpinner1.getValue();
         temp[1] = ""+(int)rotSpinner2.getValue();
         temp[2] = ""+(int)rotSpinner3.getValue();
-        System.out.println(temp);
+        System.out.println(Arrays.toString(temp));
         c.setRot(temp);
         temp[0] = ""+(int) startPosSpinner1.getValue();
         temp[1] = ""+(int) startPosSpinner2.getValue();
         temp[2] = ""+(int) startPosSpinner3.getValue();
         c.setStartPos(temp);
-        System.out.println(temp);
+        System.out.println(Arrays.toString(temp));
         c.setPlugboard(scambiatoreTextField.getText().toUpperCase().split(" "));
         System.out.println(scambiatoreTextField.getText());
         c.setReflector(this.riflettoreTextField.getText().toUpperCase().split(" "));

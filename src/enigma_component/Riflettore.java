@@ -55,10 +55,11 @@ public class Riflettore {
         for (String temp : reflector) {
             s += temp + " ";
         }
+        s = s.substring(0, s.length() - 1);
         if (this instanceof Scambiatore)
-            s1 = "Scambiatore: \n";
+            s1 = "Scambiatore: ";
         else
-            s1 = "Riflettore: \n";
-        return s1 + s + '\n';
+            s1 = "Riflettore: ";
+        return s1 + s;
     }
 }
